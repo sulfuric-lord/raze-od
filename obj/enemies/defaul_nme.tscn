@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bxdqaw8ln8chf"]
+
+[ext_resource type="Texture2D" uid="uid://fs332ebe4fbf" path="res://sprites/player_001.png" id="1_85ufk"]
+[ext_resource type="Script" uid="uid://c65jmv66lr7np" path="res://scripts/enemies/defaul_nme.gd" id="1_fi8s1"]
+[ext_resource type="Script" uid="uid://xqjbl2nasjl" path="res://scripts/weapons/weapon.gd" id="3_wu4ap"]
+[ext_resource type="Script" uid="uid://6bx7c2eh6iwr" path="res://resources/WeaponData.gd" id="4_f0j4v"]
+[ext_resource type="Resource" uid="uid://chty5eht1ewb0" path="res://resources/weapons/remmington870.tres" id="5_1fmsf"]
+[ext_resource type="Script" uid="uid://r6d6dafxa0u5" path="res://scripts/team.gd" id="6_1fmsf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5uw1"]
+size = Vector2(32, 64)
+
+[node name="DefaulNme" type="CharacterBody2D" unique_id=882589215]
+collision_layer = 2
+script = ExtResource("1_fi8s1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=663862998]
+shape = SubResource("RectangleShape2D_y5uw1")
+debug_color = Color(0.9631831, 3.080368e-06, 0.5030446, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=199301583]
+texture = ExtResource("1_85ufk")
+
+[node name="Weapon" type="Node2D" parent="." unique_id=1791825515]
+script = ExtResource("3_wu4ap")
+weapons = Array[ExtResource("4_f0j4v")]([ExtResource("5_1fmsf")])
+
+[node name="Team" type="Node2D" parent="." unique_id=1962137129]
+script = ExtResource("6_1fmsf")
+team = 2

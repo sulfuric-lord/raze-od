@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ProjectileData" load_steps=3 format=3 uid="uid://cnsqvnf4r45ec"]
+
+[ext_resource type="Script" uid="uid://dbceyo13u8cmc" path="res://resources/ProjectileData.gd" id="1_imvih"]
+[ext_resource type="Texture2D" uid="uid://mp6xaojo1avc" path="res://sprites/proj_default.png" id="2_yx74b"]
+
+[resource]
+script = ExtResource("1_imvih")
+sprite = ExtResource("2_yx74b")
+damage = 1.0
+speed = 3800.0
+lifetime = 2.0

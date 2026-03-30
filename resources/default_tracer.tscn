@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://d3h6toosgo2fl"]
+
+[ext_resource type="Script" uid="uid://dhw0q5c3pous4" path="res://scripts/weapons/default_tracer.gd" id="1_usawj"]
+
+[node name="DefaultTracer" type="Node2D" unique_id=260292423]
+script = ExtResource("1_usawj")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=2110915125]
+width = 2.94

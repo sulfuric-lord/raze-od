@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://bqeut0a8nlmcc"]
+
+[ext_resource type="PackedScene" uid="uid://bcabk82t7hlpl" path="res://obj/projectile_default.tscn" id="1_6eq3r"]
+[ext_resource type="Script" uid="uid://6bx7c2eh6iwr" path="res://resources/WeaponData.gd" id="2_1pd08"]
+[ext_resource type="PackedScene" uid="uid://d3h6toosgo2fl" path="res://resources/default_tracer.tscn" id="3_1pd08"]
+
+[resource]
+script = ExtResource("2_1pd08")
+name = "H&K416"
+projectile = ExtResource("1_6eq3r")
+dmg_mult = 1.0
+spread = 8.0
+proj_count = 1
+ammo = 30
+reload = 1.5
+fire_rate = 8.0
+proj_speed_mult = 1.0
+is_auto = true
+fire_type = 1
+tracer_scene = ExtResource("3_1pd08")
+tracer_damage = 1.0

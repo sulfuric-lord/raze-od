@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bqo1pe2a7kn5l"]
+
+[ext_resource type="Script" uid="uid://b7jbacvxb8vb0" path="res://scripts/player/player.gd" id="1_g3svd"]
+[ext_resource type="Texture2D" uid="uid://fs332ebe4fbf" path="res://sprites/player_001.png" id="2_rhfbe"]
+[ext_resource type="Script" uid="uid://6te4nhaetavq" path="res://scripts/player/movement.gd" id="3_rhfbe"]
+[ext_resource type="Script" uid="uid://bq6ot0yvy34nt" path="res://scripts/player/stats.gd" id="4_xnc2w"]
+[ext_resource type="Script" uid="uid://c78greiapix3s" path="res://scripts/player/dash.gd" id="5_x5jev"]
+[ext_resource type="Script" uid="uid://474ph0v4bf8w" path="res://scripts/ui/camera.gd" id="6_ju6bh"]
+[ext_resource type="Script" uid="uid://xqjbl2nasjl" path="res://scripts/weapons/weapon.gd" id="7_7rt03"]
+[ext_resource type="Script" uid="uid://6bx7c2eh6iwr" path="res://resources/WeaponData.gd" id="8_ixpqg"]
+[ext_resource type="Resource" uid="uid://dloknw2cp8lh0" path="res://resources/weapons/pistol_sig_sauer.tres" id="9_8x5mn"]
+[ext_resource type="Resource" uid="uid://chty5eht1ewb0" path="res://resources/weapons/remmington870.tres" id="10_8x5mn"]
+[ext_resource type="Resource" uid="uid://bqeut0a8nlmcc" path="res://resources/weapons/HK416.tres" id="11_uwt3n"]
+[ext_resource type="Script" uid="uid://r6d6dafxa0u5" path="res://scripts/team.gd" id="12_i2kr1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnc2w"]
+radius = 16.0
+height = 64.0
+
+[node name="Node2D" type="CharacterBody2D" unique_id=1650265970]
+collision_layer = 2
+script = ExtResource("1_g3svd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1265711303]
+shape = SubResource("CapsuleShape2D_xnc2w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=712712081]
+texture = ExtResource("2_rhfbe")
+
+[node name="Movement" type="Node2D" parent="." unique_id=676618851]
+script = ExtResource("3_rhfbe")
+
+[node name="stats" type="Node2D" parent="." unique_id=131547299]
+script = ExtResource("4_xnc2w")
+
+[node name="dash" type="Node2D" parent="." unique_id=1407820765]
+script = ExtResource("5_x5jev")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1201767143]
+script = ExtResource("6_ju6bh")
+
+[node name="Weapon" type="Node2D" parent="." unique_id=360538965]
+script = ExtResource("7_7rt03")
+not_player = false
+weapons = Array[ExtResource("8_ixpqg")]([ExtResource("9_8x5mn"), ExtResource("10_8x5mn"), ExtResource("11_uwt3n")])
+
+[node name="Team" type="Node2D" parent="." unique_id=1715322058]
+script = ExtResource("12_i2kr1")
+team = 1

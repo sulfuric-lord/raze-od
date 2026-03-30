@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://dloknw2cp8lh0"]
+
+[ext_resource type="PackedScene" uid="uid://bcabk82t7hlpl" path="res://obj/projectile_default.tscn" id="1_oft85"]
+[ext_resource type="Script" uid="uid://6bx7c2eh6iwr" path="res://resources/WeaponData.gd" id="2_x332y"]
+[ext_resource type="Texture2D" uid="uid://bagabl2dbjjo4" path="res://sprites/Sprite-0001.png" id="3_1di75"]
+[ext_resource type="PackedScene" uid="uid://d3h6toosgo2fl" path="res://resources/default_tracer.tscn" id="4_x332y"]
+
+[resource]
+script = ExtResource("2_x332y")
+name = "SIG Sauer P320"
+projectile = ExtResource("1_oft85")
+dmg_mult = 0.6
+spread = 6.0
+proj_count = 1
+ammo = 17
+reload = 1.5
+fire_rate = 3.0
+proj_speed_mult = 1.0
+is_auto = true
+sprite = ExtResource("3_1di75")
+fire_type = 1
+tracer_scene = ExtResource("4_x332y")
+tracer_damage = 1.0

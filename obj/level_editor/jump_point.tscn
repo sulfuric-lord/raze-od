@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bm7afcanfeg54"]
+
+[ext_resource type="Script" uid="uid://bmi7aul8i4en6" path="res://scripts/AI/jump_point.gd" id="1_36g56"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5anb"]
+size = Vector2(86, 70)
+
+[node name="jump_point" type="Area2D" unique_id=1913657880]
+script = ExtResource("1_36g56")
+jump_direction = Vector2(-1, -1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=570321444]
+shape = SubResource("RectangleShape2D_n5anb")

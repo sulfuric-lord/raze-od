@@ -10,3 +10,14 @@ static func get_damageable(node):
 		current = current.get_parent()
 	
 	return null
+
+static func get_healable(node):
+	var current = node
+	
+	while current:
+		if current.has_method("heal"):
+			print("отхилен:", current.name)
+			return current
+		current = current.get_parent()
+	
+	return null

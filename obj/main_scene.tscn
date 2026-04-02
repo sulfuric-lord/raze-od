@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d2h4kr7bia0fh" path="res://obj/game_manager.tscn" id="4_n5anb"]
 [ext_resource type="PackedScene" uid="uid://bxdqaw8ln8chf" path="res://obj/enemies/defaul_nme.tscn" id="4_uwocy"]
 [ext_resource type="PackedScene" uid="uid://bm7afcanfeg54" path="res://obj/level_editor/jump_point.tscn" id="5_n5anb"]
+[ext_resource type="PackedScene" uid="uid://c4c7a24b205mq" path="res://obj/level_editor/health_point.tscn" id="7_wktwx"]
 
 [node name="Node2D" type="Node2D" unique_id=326341057]
 
@@ -89,13 +90,13 @@ position = Vector2(-1069, 181)
 position = Vector2(-426, 39)
 
 [node name="medium_platform4" parent="platforms" unique_id=1017040333 instance=ExtResource("4_hlnon")]
-position = Vector2(-1718, 39)
+position = Vector2(-1718, 7)
 
 [node name="medium_platform5" parent="platforms" unique_id=502856999 instance=ExtResource("4_hlnon")]
-position = Vector2(-1069, -147)
+position = Vector2(-1069, -179)
 
 [node name="medium_platform8" parent="platforms" unique_id=982573744 instance=ExtResource("4_hlnon")]
-position = Vector2(-1069, -464)
+position = Vector2(-1069, -560)
 
 [node name="medium_platform14" parent="platforms" unique_id=1122580305 instance=ExtResource("4_hlnon")]
 position = Vector2(1071, 181)
@@ -107,7 +108,7 @@ position = Vector2(1071, -147)
 position = Vector2(1071, -464)
 
 [node name="medium_platform6" parent="platforms" unique_id=1516632530 instance=ExtResource("4_hlnon")]
-position = Vector2(-426, -289)
+position = Vector2(-426, -353)
 
 [node name="medium_platform17" parent="platforms" unique_id=1421288329 instance=ExtResource("4_hlnon")]
 position = Vector2(429, 39)
@@ -116,10 +117,10 @@ position = Vector2(429, 39)
 position = Vector2(429, -289)
 
 [node name="medium_platform7" parent="platforms" unique_id=94910798 instance=ExtResource("4_hlnon")]
-position = Vector2(-1718, -289)
+position = Vector2(-1718, -353)
 
 [node name="medium_platform9" parent="platforms" unique_id=130861077 instance=ExtResource("4_hlnon")]
-position = Vector2(-1718, -638)
+position = Vector2(-1718, -734)
 
 [node name="medium_platform10" parent="platforms" unique_id=696224830 instance=ExtResource("4_hlnon")]
 position = Vector2(1754, 333)
@@ -142,16 +143,16 @@ position = Vector2(-1303, 420)
 position = Vector2(-1303, 120)
 
 [node name="jump_point3" parent="jps" unique_id=182782372 instance=ExtResource("5_n5anb")]
-position = Vector2(-1303, -204)
+position = Vector2(-1303, -236)
 
 [node name="jump_point4" parent="jps" unique_id=1870577847 instance=ExtResource("5_n5anb")]
-position = Vector2(-1303, -522)
+position = Vector2(-1303, -618)
 
 [node name="jump_point5" parent="jps" unique_id=130108058 instance=ExtResource("5_n5anb")]
 position = Vector2(-673, -20)
 
 [node name="jump_point6" parent="jps" unique_id=961355217 instance=ExtResource("5_n5anb")]
-position = Vector2(-673, -346)
+position = Vector2(-673, -410)
 
 [node name="jump_point12" parent="jps" unique_id=1933002475 instance=ExtResource("5_n5anb")]
 position = Vector2(172, -20)
@@ -175,7 +176,7 @@ position = Vector2(1497, -345)
 position = Vector2(1497, -26)
 
 [node name="jump_point7" parent="jps" unique_id=1715501987 instance=ExtResource("5_n5anb")]
-position = Vector2(-169, -346)
+position = Vector2(-169, -410)
 jump_direction = Vector2(1, -1)
 
 [node name="jump_point8" parent="jps" unique_id=94736755 instance=ExtResource("5_n5anb")]
@@ -207,7 +208,7 @@ position = Vector2(-1442, 274)
 jump_direction = Vector2(1, -1)
 
 [node name="jump_point10" parent="jps" unique_id=1106729825 instance=ExtResource("5_n5anb")]
-position = Vector2(-1468, -22)
+position = Vector2(-1468, -54)
 jump_direction = Vector2(1, -1)
 
 [node name="jump_point24" parent="jps" unique_id=1991269697 instance=ExtResource("5_n5anb")]
@@ -215,9 +216,12 @@ position = Vector2(-853, 125)
 jump_direction = Vector2(1, -1)
 
 [node name="jump_point25" parent="jps" unique_id=742615119 instance=ExtResource("5_n5anb")]
-position = Vector2(-853, -175)
+position = Vector2(-853, -235)
 jump_direction = Vector2(1, -1)
 
 [node name="jump_point11" parent="jps" unique_id=959162379 instance=ExtResource("5_n5anb")]
-position = Vector2(-1468, -343)
+position = Vector2(-1468, -407)
 jump_direction = Vector2(1, -1)
+
+[node name="health_point" parent="jps" unique_id=2140221623 instance=ExtResource("7_wktwx")]
+position = Vector2(-944, 427)

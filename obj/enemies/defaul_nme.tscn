@@ -13,6 +13,7 @@ size = Vector2(32, 64)
 [node name="DefaulNme" type="CharacterBody2D" unique_id=882589215]
 collision_layer = 2
 script = ExtResource("1_fi8s1")
+maxHp = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=663862998]
 shape = SubResource("RectangleShape2D_y5uw1")

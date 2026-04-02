@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c4c7a24b205mq"]
+
+[ext_resource type="Script" uid="uid://dbls4yxjk1yj6" path="res://health_point.gd" id="1_r0nke"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0nke"]
+
+[node name="health_point" type="Area2D" unique_id=2140221623]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_r0nke")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=688570168]
+shape = SubResource("RectangleShape2D_r0nke")

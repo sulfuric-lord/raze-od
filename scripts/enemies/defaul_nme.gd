@@ -2,20 +2,24 @@ extends CharacterBody2D
 
 enum State {
 	CHASE,
-	FIRE
+	FIRE,
+	RETREAT
 }
 
 var current_state = State.CHASE
 
 var jps := []
-@export var speed : float = 250.0
-@export var jump_vel : float = 400.0
+@export var speed : float = 350.0
+@export var jump_vel : float = 1000.0
 
 var current_target = null
 var current_jp = null
 var is_jumping := false
 var retarget_timer := 0.0
 @export var retarget_time := 5.0
+
+var current_heal_point = null
+@export var retreat_hp_threshold := 0.3
 
 var to_target := Vector2.ZERO
 var distance_to_target := INF
@@ -24,10 +28,20 @@ var same_level := false
 var target_above := false
 var target_below := false
 
-@export var gravity := 900.0
+@export var gravity := 2000.0
 @onready var weapon = $Weapon
+@export var maxHp : float
+var hp : float
+
+var shoot_decision_timer := 0.0
+var wants_to_shoot := false
+
+@export var shoot_decision_interval_min := 0.3
+@export var shoot_decision_interval_max := 1.2
+@export var shoot_chance := 0.6
 
 func _ready():
+	hp = maxHp
 	jps = get_jps()
 	add_to_group("entities")
 	
@@ -39,6 +53,8 @@ func _physics_process(delta):
 			state_chase(delta)
 		State.FIRE:
 			state_fire(delta)
+		State.RETREAT:
+			state_retreat(delta)
 	
 	apply_gravity(delta)
 	
@@ -51,7 +67,15 @@ func think(delta):
 	retarget_timer -= delta
 	var old_target = current_target
 	
-	# --- 1. ПОИСК ЦЕЛИ ---
+	var hp_ratio : float = hp / maxHp
+	if hp_ratio <= retreat_hp_threshold:
+		current_heal_point = find_heal_point()
+		if current_heal_point != null:
+			current_state = State.RETREAT
+			return
+	else:
+		current_heal_point = null
+	
 	if retarget_timer <= 0:
 		var enemies = get_enemies()
 		current_target = find_enemy(enemies)
@@ -65,7 +89,6 @@ func think(delta):
 		current_state = State.CHASE
 		return
 	
-	# --- 2. АНАЛИЗ ---
 	to_target = current_target.global_position - global_position
 	distance_to_target = to_target.length()
 	
@@ -73,17 +96,21 @@ func think(delta):
 	target_above = to_target.y < -40
 	target_below = to_target.y > 40
 	
-	# --- 3. ПОИСК JP ---
 	if target_above:
 		current_jp = find_jp_same_level()
 	else:
 		current_jp = null
 	
-	# --- 4. ВЫБОР СОСТОЯНИЯ ---
 	if same_level and distance_to_target <= 50:
 		current_state = State.FIRE
 	else:
 		current_state = State.CHASE
+		
+	shoot_decision_timer -= delta
+
+	if shoot_decision_timer <= 0:
+		shoot_decision_timer = randf_range(shoot_decision_interval_min, shoot_decision_interval_max)
+		wants_to_shoot = randf() < shoot_chance
 
 func state_chase(delta):
 	if current_target == null:
@@ -93,13 +120,13 @@ func state_chase(delta):
 	if is_jumping:
 		return
 	
-	# --- НА ОДНОМ УРОВНЕ ---
 	if same_level:
 		var dir = sign(to_target.x)
 		velocity.x = dir * speed
+		if wants_to_shoot:
+			weapon.ai_shoot(to_target)
 		return
 	
-	# --- ВЫШЕ ---
 	if target_above:
 		if current_jp == null:
 			velocity.x = 0
@@ -111,13 +138,12 @@ func state_chase(delta):
 		velocity.x = dir * speed
 		
 		if abs(to_jp.x) <= 50:
-			velocity.y = -current_jp.jump_force
+			velocity.y = -jump_vel
 			is_jumping = true
 			current_jp = null
 		
 		return
 	
-	# --- НИЖЕ ---
 	if target_below:
 		var center_x = 0
 		var dir = sign(center_x - global_position.x)
@@ -134,8 +160,65 @@ func state_fire(delta):
 	
 	weapon.ai_shoot(dir)
 
+func state_retreat(delta):
+	if current_heal_point == null:
+		current_state = State.CHASE
+		return
+	
+	var to_heal = current_heal_point.global_position - global_position
+	var same_level = abs(to_heal.y) <= 40
+	var target_above = to_heal.y < -40
+	var target_below = to_heal.y > 40
+	
+	if is_jumping:
+		return
+	
+	if same_level:
+		velocity.x = sign(to_heal.x) * speed
+		return
+	
+	if target_above:
+		var jp = find_jp_same_level()
+		if jp == null:
+			velocity.x = 0
+			return
+		
+		var to_jp = jp.global_position - global_position
+		velocity.x = sign(to_jp.x) * speed
+		
+		if abs(to_jp.x) <= 50:
+			velocity.y = -jump_vel
+			is_jumping = true
+		
+		return
+	
+	if target_below:
+		var center_x = 0
+		velocity.x = sign(center_x - global_position.x) * speed
+
 func get_jps():
 	return get_tree().get_nodes_in_group("jump_points")
+
+func get_active_heal_points():
+	var result := []
+	
+	for h in get_tree().get_nodes_in_group("heal_points"):
+		if h.active:
+			result.append(h)
+	
+	return result
+	
+func find_heal_point():
+	var best = null
+	var best_dist = INF
+	
+	for h in get_active_heal_points():
+		var dist = global_position.distance_to(h.global_position)
+		if dist < best_dist:
+			best = h
+			best_dist = dist
+	
+	return best
 
 func get_enemies():
 	var result := []
@@ -205,3 +288,16 @@ func get_dir(x):
 func apply_gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
+
+func take_damage(amount: float):
+	hp -= amount
+	
+	if hp <= 0:
+		die()
+
+func die():
+	queue_free()
+
+func heal(amount: float):
+	hp += amount
+	hp = clamp(hp, 0, maxHp)

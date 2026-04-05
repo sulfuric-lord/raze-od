@@ -10,7 +10,7 @@ var current_state = State.CHASE
 
 var jps := []
 @export var speed : float = 350.0
-@export var jump_vel : float = 1000.0
+@export var jump_vel : float = 800.0
 
 var current_target = null
 var current_jp = null
@@ -28,7 +28,7 @@ var same_level := false
 var target_above := false
 var target_below := false
 
-@export var gravity := 2000.0
+@export var gravity := 1000.0
 @onready var weapon = $Weapon
 @export var maxHp : float
 var hp : float
@@ -248,11 +248,17 @@ func find_enemy(enemies):
 	return best
 
 func find_jp_same_level():
-	var forward_best = null
-	var forward_dist = INF
-	
-	var back_best = null
-	var back_dist = INF
+	var forward_correct = null
+	var forward_correct_dist = INF
+
+	var forward_wrong = null
+	var forward_wrong_dist = INF
+
+	var back_correct = null
+	var back_correct_dist = INF
+
+	var back_wrong = null
+	var back_wrong_dist = INF
 	
 	var to_target = current_target.global_position - global_position
 	var target_dir = get_dir(to_target.x)
@@ -260,25 +266,42 @@ func find_jp_same_level():
 	for jp in get_jps():
 		if abs(jp.global_position.y - global_position.y) > 40:
 			continue
-		
+
 		var to_jp = jp.global_position - global_position
 		var dist = to_jp.length()
 		var jp_dir = get_dir(to_jp.x)
+		var is_forward = jp_dir == target_dir
+		var is_correct = sign(jp.jump_direction.x) == target_dir
 		
-		if jp_dir == target_dir:
-			if dist < forward_dist:
-				forward_best = jp
-				forward_dist = dist
-		
+		if is_forward:
+			if is_correct:
+				if dist < forward_correct_dist:
+					forward_correct = jp
+					forward_correct_dist = dist
+			else:
+				if dist < forward_wrong_dist:
+					forward_wrong = jp
+					forward_wrong_dist = dist
 		else:
-			if dist < back_dist:
-				back_best = jp
-				back_dist = dist
+			if is_correct:
+				if dist < back_correct_dist:
+					back_correct = jp
+					back_correct_dist = dist
+			else:
+				if dist < back_wrong_dist:
+					back_wrong = jp
+					back_wrong_dist = dist
 	
-	if forward_best != null and (back_best == null or back_dist > forward_dist * 2):
-		return forward_best
+	if forward_correct != null:
+		return forward_correct
 
-	return back_best
+	if forward_wrong != null:
+		return forward_wrong
+
+	if back_correct != null:
+		return back_correct
+
+	return back_wrong
 
 func get_dir(x):
 	if x >= 0:

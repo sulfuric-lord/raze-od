@@ -2,8 +2,8 @@ extends Node2D
 
 # MOVEMENT_STATS
 @export var speed: float = 400.0
-@export var gravity: float = 2000.0
-@export var jump_speed: float = 1000.0
+@export var gravity: float = 1000.0
+@export var jump_speed: float = 800.0
 @export var max_jumps: int = 2
 
 # DASH_STATS

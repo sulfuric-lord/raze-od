@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://d2h4kr7bia0fh" path="res://obj/game_manager.tscn" id="4_n5anb"]
 [ext_resource type="PackedScene" uid="uid://bxdqaw8ln8chf" path="res://obj/enemies/defaul_nme.tscn" id="4_uwocy"]
 [ext_resource type="PackedScene" uid="uid://bm7afcanfeg54" path="res://obj/level_editor/jump_point.tscn" id="5_n5anb"]
-[ext_resource type="PackedScene" uid="uid://c4c7a24b205mq" path="res://obj/level_editor/health_point.tscn" id="7_wktwx"]
+[ext_resource type="PackedScene" uid="uid://cqjrtkocqiccc" path="res://obj/level_editor/small_platform.tscn" id="6_n5anb"]
+[ext_resource type="Script" uid="uid://ci5bab3uaekqv" path="res://scripts/spawn_point.gd" id="8_7okpk"]
 
 [node name="Node2D" type="Node2D" unique_id=326341057]
 
@@ -25,10 +26,11 @@ offset_bottom = 14.0
 player = NodePath("../../Node2D")
 
 [node name="DefaulNme" parent="." unique_id=882589215 instance=ExtResource("4_uwocy")]
-position = Vector2(536, 197)
+position = Vector2(524, 333)
 
 [node name="GameManager" parent="." unique_id=936136611 instance=ExtResource("4_n5anb")]
 position = Vector2(708, 758)
+enemy_scene = ExtResource("4_uwocy")
 
 [node name="floor" type="Node2D" parent="." unique_id=297382774]
 
@@ -77,151 +79,147 @@ position = Vector2(620, 0)
 [node name="medium_platform10" parent="wall_right" unique_id=1468657569 instance=ExtResource("4_hlnon")]
 position = Vector2(-620, 0)
 
-[node name="platforms" type="Node2D" parent="." unique_id=1386046214]
-position = Vector2(-5, 0)
+[node name="platforms" type="Node2D" parent="." unique_id=1179662419]
+position = Vector2(0, 480)
 
-[node name="medium_platform" parent="platforms" unique_id=1937432110 instance=ExtResource("4_hlnon")]
-position = Vector2(-1701, 333)
+[node name="small_platform" parent="platforms" unique_id=397906751 instance=ExtResource("6_n5anb")]
+position = Vector2(500, -250)
 
-[node name="medium_platform2" parent="platforms" unique_id=1959896462 instance=ExtResource("4_hlnon")]
-position = Vector2(-1069, 181)
+[node name="small_platform2" parent="platforms" unique_id=2109686293 instance=ExtResource("6_n5anb")]
+position = Vector2(1000, -500)
 
-[node name="medium_platform3" parent="platforms" unique_id=301924648 instance=ExtResource("4_hlnon")]
-position = Vector2(-426, 39)
+[node name="small_platform3" parent="platforms" unique_id=313246174 instance=ExtResource("6_n5anb")]
+position = Vector2(1500, -750)
 
-[node name="medium_platform4" parent="platforms" unique_id=1017040333 instance=ExtResource("4_hlnon")]
-position = Vector2(-1718, 7)
+[node name="small_platform4" parent="platforms" unique_id=1477922877 instance=ExtResource("6_n5anb")]
+position = Vector2(1500, -250)
 
-[node name="medium_platform5" parent="platforms" unique_id=502856999 instance=ExtResource("4_hlnon")]
-position = Vector2(-1069, -179)
+[node name="small_platform5" parent="platforms" unique_id=414565936 instance=ExtResource("6_n5anb")]
+position = Vector2(500, -750)
 
-[node name="medium_platform8" parent="platforms" unique_id=982573744 instance=ExtResource("4_hlnon")]
-position = Vector2(-1069, -560)
+[node name="small_platform6" parent="platforms" unique_id=1886644659 instance=ExtResource("6_n5anb")]
+position = Vector2(2000, -1000)
 
-[node name="medium_platform14" parent="platforms" unique_id=1122580305 instance=ExtResource("4_hlnon")]
-position = Vector2(1071, 181)
+[node name="small_platform7" parent="platforms" unique_id=1756731320 instance=ExtResource("6_n5anb")]
+position = Vector2(2000, -500)
 
-[node name="medium_platform15" parent="platforms" unique_id=1159206280 instance=ExtResource("4_hlnon")]
-position = Vector2(1071, -147)
+[node name="small_platform8" parent="platforms" unique_id=1284683178 instance=ExtResource("6_n5anb")]
+position = Vector2(-500, -250)
 
-[node name="medium_platform16" parent="platforms" unique_id=1683863578 instance=ExtResource("4_hlnon")]
-position = Vector2(1071, -464)
+[node name="small_platform9" parent="platforms" unique_id=1219665251 instance=ExtResource("6_n5anb")]
+position = Vector2(-1000, -500)
 
-[node name="medium_platform6" parent="platforms" unique_id=1516632530 instance=ExtResource("4_hlnon")]
-position = Vector2(-426, -353)
+[node name="small_platform10" parent="platforms" unique_id=1637001750 instance=ExtResource("6_n5anb")]
+position = Vector2(-1500, -750)
 
-[node name="medium_platform17" parent="platforms" unique_id=1421288329 instance=ExtResource("4_hlnon")]
-position = Vector2(429, 39)
+[node name="small_platform11" parent="platforms" unique_id=955430833 instance=ExtResource("6_n5anb")]
+position = Vector2(-1500, -250)
 
-[node name="medium_platform18" parent="platforms" unique_id=327212811 instance=ExtResource("4_hlnon")]
-position = Vector2(429, -289)
+[node name="small_platform12" parent="platforms" unique_id=466504960 instance=ExtResource("6_n5anb")]
+position = Vector2(-500, -750)
 
-[node name="medium_platform7" parent="platforms" unique_id=94910798 instance=ExtResource("4_hlnon")]
-position = Vector2(-1718, -353)
+[node name="small_platform13" parent="platforms" unique_id=271684851 instance=ExtResource("6_n5anb")]
+position = Vector2(-2000, -1000)
 
-[node name="medium_platform9" parent="platforms" unique_id=130861077 instance=ExtResource("4_hlnon")]
-position = Vector2(-1718, -734)
+[node name="small_platform14" parent="platforms" unique_id=962922818 instance=ExtResource("6_n5anb")]
+position = Vector2(-2000, -500)
 
-[node name="medium_platform10" parent="platforms" unique_id=696224830 instance=ExtResource("4_hlnon")]
-position = Vector2(1754, 333)
-
-[node name="medium_platform11" parent="platforms" unique_id=1910469035 instance=ExtResource("4_hlnon")]
-position = Vector2(1737, 39)
-
-[node name="medium_platform12" parent="platforms" unique_id=1140202892 instance=ExtResource("4_hlnon")]
-position = Vector2(1737, -289)
-
-[node name="medium_platform13" parent="platforms" unique_id=639599092 instance=ExtResource("4_hlnon")]
-position = Vector2(1737, -638)
-
-[node name="jps" type="Node2D" parent="." unique_id=2139314370]
+[node name="jps" type="Node2D" parent="." unique_id=1195956630]
 
 [node name="jump_point" parent="jps" unique_id=1913657880 instance=ExtResource("5_n5anb")]
-position = Vector2(-1303, 420)
+position = Vector2(-613, 176)
 
-[node name="jump_point2" parent="jps" unique_id=1654953296 instance=ExtResource("5_n5anb")]
-position = Vector2(-1303, 120)
+[node name="jump_point2" parent="jps" unique_id=1182964971 instance=ExtResource("5_n5anb")]
+position = Vector2(-1607, 176)
 
-[node name="jump_point3" parent="jps" unique_id=182782372 instance=ExtResource("5_n5anb")]
-position = Vector2(-1303, -236)
+[node name="jump_point3" parent="jps" unique_id=172804278 instance=ExtResource("5_n5anb")]
+position = Vector2(-1607, -325)
 
-[node name="jump_point4" parent="jps" unique_id=1870577847 instance=ExtResource("5_n5anb")]
-position = Vector2(-1303, -618)
+[node name="jump_point4" parent="jps" unique_id=1976986156 instance=ExtResource("5_n5anb")]
+position = Vector2(-1106, -75)
 
-[node name="jump_point5" parent="jps" unique_id=130108058 instance=ExtResource("5_n5anb")]
-position = Vector2(-673, -20)
+[node name="jump_point5" parent="jps" unique_id=432087504 instance=ExtResource("5_n5anb")]
+position = Vector2(907, -75)
 
-[node name="jump_point6" parent="jps" unique_id=961355217 instance=ExtResource("5_n5anb")]
-position = Vector2(-673, -410)
+[node name="jump_point6" parent="jps" unique_id=1860203342 instance=ExtResource("5_n5anb")]
+position = Vector2(1396, 171)
 
-[node name="jump_point12" parent="jps" unique_id=1933002475 instance=ExtResource("5_n5anb")]
-position = Vector2(172, -20)
+[node name="jump_point7" parent="jps" unique_id=1262233539 instance=ExtResource("5_n5anb")]
+position = Vector2(1396, -330)
 
-[node name="jump_point13" parent="jps" unique_id=2109735251 instance=ExtResource("5_n5anb")]
-position = Vector2(172, -346)
+[node name="jump_point8" parent="jps" unique_id=1483252233 instance=ExtResource("5_n5anb")]
+position = Vector2(1885, -75)
 
-[node name="jump_point14" parent="jps" unique_id=743945220 instance=ExtResource("5_n5anb")]
-position = Vector2(847, 125)
-
-[node name="jump_point15" parent="jps" unique_id=1651458521 instance=ExtResource("5_n5anb")]
-position = Vector2(847, -201)
-
-[node name="jump_point16" parent="jps" unique_id=1210401880 instance=ExtResource("5_n5anb")]
-position = Vector2(1497, 300)
-
-[node name="jump_point18" parent="jps" unique_id=2146862696 instance=ExtResource("5_n5anb")]
-position = Vector2(1497, -345)
-
-[node name="jump_point17" parent="jps" unique_id=64764169 instance=ExtResource("5_n5anb")]
-position = Vector2(1497, -26)
-
-[node name="jump_point7" parent="jps" unique_id=1715501987 instance=ExtResource("5_n5anb")]
-position = Vector2(-169, -410)
+[node name="jump_point9" parent="jps" unique_id=1173803693 instance=ExtResource("5_n5anb")]
+position = Vector2(1613, 171)
 jump_direction = Vector2(1, -1)
 
-[node name="jump_point8" parent="jps" unique_id=94736755 instance=ExtResource("5_n5anb")]
-position = Vector2(-169, -19)
+[node name="jump_point10" parent="jps" unique_id=164374931 instance=ExtResource("5_n5anb")]
+position = Vector2(1613, -330)
 jump_direction = Vector2(1, -1)
 
-[node name="jump_point19" parent="jps" unique_id=2140503460 instance=ExtResource("5_n5anb")]
-position = Vector2(631, -356)
+[node name="jump_point11" parent="jps" unique_id=1555124272 instance=ExtResource("5_n5anb")]
+position = Vector2(1116, -79)
 jump_direction = Vector2(1, -1)
 
-[node name="jump_point20" parent="jps" unique_id=543006315 instance=ExtResource("5_n5anb")]
-position = Vector2(631, -29)
+[node name="jump_point12" parent="jps" unique_id=1756783627 instance=ExtResource("5_n5anb")]
+position = Vector2(615, 172)
 jump_direction = Vector2(1, -1)
 
-[node name="jump_point21" parent="jps" unique_id=946503835 instance=ExtResource("5_n5anb")]
-position = Vector2(1346, -201)
+[node name="jump_point13" parent="jps" unique_id=890016893 instance=ExtResource("5_n5anb")]
+position = Vector2(-1390, 172)
 jump_direction = Vector2(1, -1)
 
-[node name="jump_point23" parent="jps" unique_id=546366372 instance=ExtResource("5_n5anb")]
-position = Vector2(1346, -526)
+[node name="jump_point14" parent="jps" unique_id=143257086 instance=ExtResource("5_n5anb")]
+position = Vector2(-1883, -74)
 jump_direction = Vector2(1, -1)
 
-[node name="jump_point22" parent="jps" unique_id=433533218 instance=ExtResource("5_n5anb")]
-position = Vector2(1346, 126)
+[node name="jump_point15" parent="jps" unique_id=2012675022 instance=ExtResource("5_n5anb")]
+position = Vector2(-889, -74)
 jump_direction = Vector2(1, -1)
 
-[node name="jump_point9" parent="jps" unique_id=1935565623 instance=ExtResource("5_n5anb")]
-position = Vector2(-1442, 274)
+[node name="jump_point16" parent="jps" unique_id=1123355783 instance=ExtResource("5_n5anb")]
+position = Vector2(-889, 419)
 jump_direction = Vector2(1, -1)
 
-[node name="jump_point10" parent="jps" unique_id=1106729825 instance=ExtResource("5_n5anb")]
-position = Vector2(-1468, -54)
+[node name="jump_point17" parent="jps" unique_id=1995099703 instance=ExtResource("5_n5anb")]
+position = Vector2(-1825, 419)
 jump_direction = Vector2(1, -1)
 
-[node name="jump_point24" parent="jps" unique_id=1991269697 instance=ExtResource("5_n5anb")]
-position = Vector2(-853, 125)
+[node name="jump_point18" parent="jps" unique_id=2113068892 instance=ExtResource("5_n5anb")]
+position = Vector2(147, 419)
 jump_direction = Vector2(1, -1)
 
-[node name="jump_point25" parent="jps" unique_id=742615119 instance=ExtResource("5_n5anb")]
-position = Vector2(-853, -235)
+[node name="jump_point19" parent="jps" unique_id=2014022771 instance=ExtResource("5_n5anb")]
+position = Vector2(1175, 419)
 jump_direction = Vector2(1, -1)
 
-[node name="jump_point11" parent="jps" unique_id=959162379 instance=ExtResource("5_n5anb")]
-position = Vector2(-1468, -407)
-jump_direction = Vector2(1, -1)
+[node name="jump_point20" parent="jps" unique_id=11876091 instance=ExtResource("5_n5anb")]
+position = Vector2(1818, 419)
 
-[node name="health_point" parent="jps" unique_id=2140221623 instance=ExtResource("7_wktwx")]
-position = Vector2(-944, 427)
+[node name="jump_point21" parent="jps" unique_id=759878336 instance=ExtResource("5_n5anb")]
+position = Vector2(820, 419)
+
+[node name="jump_point22" parent="jps" unique_id=636210063 instance=ExtResource("5_n5anb")]
+position = Vector2(-128, 419)
+
+[node name="jump_point23" parent="jps" unique_id=1695019539 instance=ExtResource("5_n5anb")]
+position = Vector2(-1168, 419)
+
+[node name="enemy_spawners" type="Node2D" parent="." unique_id=580560884]
+
+[node name="spawn_point" type="Node2D" parent="enemy_spawners" unique_id=365801426]
+position = Vector2(-2063, -627)
+script = ExtResource("8_7okpk")
+
+[node name="spawn_point2" type="Node2D" parent="enemy_spawners" unique_id=680488850]
+position = Vector2(-2055, -117)
+script = ExtResource("8_7okpk")
+
+[node name="spawn_point3" type="Node2D" parent="enemy_spawners" unique_id=1407265420]
+position = Vector2(1968, -719)
+script = ExtResource("8_7okpk")
+
+[node name="spawn_point4" type="Node2D" parent="enemy_spawners" unique_id=225201212]
+position = Vector2(2010, -168)
+script = ExtResource("8_7okpk")

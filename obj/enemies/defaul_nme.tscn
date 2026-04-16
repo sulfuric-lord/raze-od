@@ -16,10 +16,13 @@ script = ExtResource("1_fi8s1")
 maxHp = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=663862998]
+scale = Vector2(1.5198898, 2.1647594)
 shape = SubResource("RectangleShape2D_y5uw1")
 debug_color = Color(0.9631831, 3.080368e-06, 0.5030446, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=199301583]
+modulate = Color(0.6522269, 2.7675183e-06, 4.3317675e-07, 1)
+scale = Vector2(1.5373195, 2.1599998)
 texture = ExtResource("1_85ufk")
 
 [node name="Weapon" type="Node2D" parent="." unique_id=1791825515]

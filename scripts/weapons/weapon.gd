@@ -104,10 +104,17 @@ func shoot_hitscan(w, dir: Vector2):
 	var hit_pos = to
 
 	if result:
+		hit_pos = result.position
 		var target = Utils.get_damageable(result.collider)
 		if target:
+			if target.has_node("Team") and get_parent().has_node("Team"):
+				var my_team = get_parent().get_node("Team").team
+				var target_team = target.get_node("Team").team
+				
+				if my_team == target_team:
+					return 
+			
 			target.take_damage(w.tracer_damage * w.dmg_mult)
-		hit_pos = result.position
 	
 	spawn_tracer(from, hit_pos, w)
 	

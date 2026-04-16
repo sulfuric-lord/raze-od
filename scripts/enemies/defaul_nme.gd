@@ -16,7 +16,7 @@ var current_target = null
 var current_jp = null
 var is_jumping := false
 var retarget_timer := 0.0
-@export var retarget_time := 5.0
+@export var retarget_time := 3.0
 
 var current_heal_point = null
 @export var retreat_hp_threshold := 0.3
@@ -39,6 +39,9 @@ var wants_to_shoot := false
 @export var shoot_decision_interval_min := 0.3
 @export var shoot_decision_interval_max := 1.2
 @export var shoot_chance := 0.6
+
+signal died(entity)
+var is_dead:bool = false
 
 func _ready():
 	hp = maxHp
@@ -64,6 +67,9 @@ func _physics_process(delta):
 	move_and_slide()
 
 func think(delta):
+	if not is_instance_valid(current_target):
+		current_target = null
+	
 	retarget_timer -= delta
 	var old_target = current_target
 	
@@ -76,7 +82,7 @@ func think(delta):
 	else:
 		current_heal_point = null
 	
-	if retarget_timer <= 0:
+	if retarget_timer <= 0 or current_target == null:
 		var enemies = get_enemies()
 		current_target = find_enemy(enemies)
 		retarget_timer = retarget_time
@@ -101,7 +107,7 @@ func think(delta):
 	else:
 		current_jp = null
 	
-	if same_level and distance_to_target <= 50:
+	if same_level and distance_to_target <= 350 and is_on_floor():
 		current_state = State.FIRE
 	else:
 		current_state = State.CHASE
@@ -236,16 +242,14 @@ func get_enemies():
 	return result
 	
 func find_enemy(enemies):
-	var best = null
-	var best_dist = INF
+	if enemies.is_empty():
+		return null
+	enemies.sort_custom(func(a, b):
+		return global_position.distance_to(a.global_position) < global_position.distance_to(b.global_position)
+	)
+	var candidates = enemies.slice(0, min(3, enemies.size()))
 	
-	for e in enemies:
-		var dist = global_position.distance_to(e.global_position)
-		if dist < best_dist:
-			best = e
-			best_dist = dist
-	
-	return best
+	return candidates.pick_random()
 
 func find_jp_same_level():
 	var forward_correct = null
@@ -313,12 +317,16 @@ func apply_gravity(delta):
 		velocity.y += gravity * delta
 
 func take_damage(amount: float):
+	if is_dead:
+		return
 	hp -= amount
 	
 	if hp <= 0:
 		die()
 
 func die():
+	is_dead = true
+	emit_signal("died", self)
 	queue_free()
 
 func heal(amount: float):

@@ -1,27 +1,20 @@
-[gd_scene format=3 uid="uid://bqo1pe2a7kn5l"]
+[gd_scene format=3 uid="uid://7h8qh73pnkmj"]
 
-[ext_resource type="Script" uid="uid://b7jbacvxb8vb0" path="res://scripts/player/player.gd" id="1_g3svd"]
-[ext_resource type="Script" uid="uid://6te4nhaetavq" path="res://scripts/player/movement.gd" id="3_rhfbe"]
-[ext_resource type="Script" uid="uid://bq6ot0yvy34nt" path="res://scripts/player/stats.gd" id="4_xnc2w"]
-[ext_resource type="Script" uid="uid://c78greiapix3s" path="res://scripts/player/dash.gd" id="5_x5jev"]
-[ext_resource type="Script" uid="uid://474ph0v4bf8w" path="res://scripts/ui/camera.gd" id="6_ju6bh"]
-[ext_resource type="Script" uid="uid://xqjbl2nasjl" path="res://scripts/weapons/weapon.gd" id="7_7rt03"]
-[ext_resource type="Script" uid="uid://6bx7c2eh6iwr" path="res://resources/WeaponData.gd" id="8_ixpqg"]
-[ext_resource type="Resource" uid="uid://dloknw2cp8lh0" path="res://resources/weapons/pistol_sig_sauer.tres" id="9_8x5mn"]
-[ext_resource type="Resource" uid="uid://chty5eht1ewb0" path="res://resources/weapons/remmington870.tres" id="10_8x5mn"]
-[ext_resource type="Resource" uid="uid://bqeut0a8nlmcc" path="res://resources/weapons/HK416.tres" id="11_uwt3n"]
-[ext_resource type="Script" uid="uid://r6d6dafxa0u5" path="res://scripts/team.gd" id="12_i2kr1"]
-[ext_resource type="Texture2D" uid="uid://nlcdel838x4f" path="res://sprites/torso.png" id="12_jnxdb"]
-[ext_resource type="Texture2D" uid="uid://djsaes6sjk6dx" path="res://sprites/head.png" id="13_4l4pj"]
-[ext_resource type="Texture2D" uid="uid://d37w8rirbvhxq" path="res://sprites/leg.png" id="14_cwiev"]
-[ext_resource type="Texture2D" uid="uid://co2wtdvyokp3o" path="res://sprites/foot.png" id="15_ihc6m"]
-[ext_resource type="Texture2D" uid="uid://bi3xahs2kse43" path="res://sprites/shoulder.png" id="16_seltl"]
-[ext_resource type="Texture2D" uid="uid://xfys02tpk5la" path="res://sprites/arm.png" id="17_tni2m"]
-[ext_resource type="Script" uid="uid://crtnk55i7cfpr" path="res://scripts/animator.gd" id="18_3nr6l"]
+[ext_resource type="Script" uid="uid://c65jmv66lr7np" path="res://scripts/enemies/defaul_nme.gd" id="1_fwgem"]
+[ext_resource type="Script" uid="uid://xqjbl2nasjl" path="res://scripts/weapons/weapon.gd" id="3_pxh1b"]
+[ext_resource type="Script" uid="uid://6bx7c2eh6iwr" path="res://resources/WeaponData.gd" id="4_qxcin"]
+[ext_resource type="Resource" uid="uid://chty5eht1ewb0" path="res://resources/weapons/remmington870.tres" id="5_o3vc2"]
+[ext_resource type="Script" uid="uid://r6d6dafxa0u5" path="res://scripts/team.gd" id="6_2vhic"]
+[ext_resource type="Texture2D" uid="uid://nlcdel838x4f" path="res://sprites/torso.png" id="6_ld82m"]
+[ext_resource type="Texture2D" uid="uid://djsaes6sjk6dx" path="res://sprites/head.png" id="7_kupig"]
+[ext_resource type="Texture2D" uid="uid://d37w8rirbvhxq" path="res://sprites/leg.png" id="8_gwb6m"]
+[ext_resource type="Texture2D" uid="uid://co2wtdvyokp3o" path="res://sprites/foot.png" id="9_qg7br"]
+[ext_resource type="Texture2D" uid="uid://bi3xahs2kse43" path="res://sprites/shoulder.png" id="10_dydxc"]
+[ext_resource type="Texture2D" uid="uid://xfys02tpk5la" path="res://sprites/arm.png" id="11_voqix"]
+[ext_resource type="Script" uid="uid://crtnk55i7cfpr" path="res://scripts/animator.gd" id="12_ld82m"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xnc2w"]
-radius = 16.0
-height = 64.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5uw1"]
+size = Vector2(32, 64)
 
 [sub_resource type="Animation" id="Animation_ld82m"]
 length = 0.001
@@ -298,138 +291,126 @@ tracks/5/keys = {
 "values": [-0.20125335, -0.13859794, -0.20125335]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yprbq"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ld82m"]
 _data = {
 &"RESET": SubResource("Animation_ld82m"),
 &"idle": SubResource("Animation_kupig"),
 &"walk": SubResource("Animation_2vhic")
 }
 
-[node name="Node2D" type="CharacterBody2D" unique_id=1650265970]
+[node name="DefaulNme" type="CharacterBody2D" unique_id=882589215]
 collision_layer = 2
-script = ExtResource("1_g3svd")
+script = ExtResource("1_fwgem")
+maxHp = 10.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1265711303]
-scale = Vector2(1.5599992, 2.2800007)
-shape = SubResource("CapsuleShape2D_xnc2w")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=663862998]
+scale = Vector2(1.3600001, 2.1999998)
+shape = SubResource("RectangleShape2D_y5uw1")
+debug_color = Color(0.9631831, 3.080368e-06, 0.5030446, 0.41960785)
 
-[node name="Movement" type="Node2D" parent="." unique_id=676618851]
-script = ExtResource("3_rhfbe")
+[node name="Weapon" type="Node2D" parent="." unique_id=1791825515]
+script = ExtResource("3_pxh1b")
+weapons = Array[ExtResource("4_qxcin")]([ExtResource("5_o3vc2")])
 
-[node name="stats" type="Node2D" parent="." unique_id=131547299]
-script = ExtResource("4_xnc2w")
-
-[node name="dash" type="Node2D" parent="." unique_id=1407820765]
-script = ExtResource("5_x5jev")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1201767143]
-zoom = Vector2(0.76, 0.76)
-script = ExtResource("6_ju6bh")
-
-[node name="Weapon" type="Node2D" parent="." unique_id=360538965]
-script = ExtResource("7_7rt03")
-not_player = false
-weapons = Array[ExtResource("8_ixpqg")]([ExtResource("9_8x5mn"), ExtResource("10_8x5mn"), ExtResource("11_uwt3n")])
-
-[node name="Team" type="Node2D" parent="." unique_id=1715322058]
-script = ExtResource("12_i2kr1")
+[node name="Team" type="Node2D" parent="." unique_id=1962137129]
+script = ExtResource("6_2vhic")
 team = 1
 
-[node name="Skeleton2D" type="Skeleton2D" parent="." unique_id=1651890076]
-modulate = Color(0.58000004, 0.94400007, 1, 1)
+[node name="Skeleton2D" type="Skeleton2D" parent="." unique_id=878904705]
+modulate = Color(0.49, 1, 0.592, 1)
 scale = Vector2(2.3824008, 2.3824008)
 
-[node name="torso" type="Bone2D" parent="Skeleton2D" unique_id=880370418]
+[node name="torso" type="Bone2D" parent="Skeleton2D" unique_id=1359633790]
 rotation = -0.20125335
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(1, 0, 0, 1, 0, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso" unique_id=1520095656]
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso" unique_id=1195362765]
 position = Vector2(0, -8)
 rotation = 0.008505722
 scale = Vector2(0.08196722, 0.081967235)
-texture = ExtResource("12_jnxdb")
+texture = ExtResource("6_ld82m")
 
-[node name="head" type="Bone2D" parent="Skeleton2D/torso" unique_id=1072931867]
+[node name="head" type="Bone2D" parent="Skeleton2D/torso" unique_id=980826377]
 position = Vector2(0, -19)
 rotation = 0.091999754
-scale = Vector2(0.99999803, 0.99999803)
+scale = Vector2(0.9999991, 0.9999991)
 rest = Transform2D(1, 0, 0, 1, 0, -19)
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/head" unique_id=2044553778]
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/head" unique_id=1765565481]
 position = Vector2(-0.99999994, -3.0000005)
 scale = Vector2(0.07692309, 0.07692307)
-texture = ExtResource("13_4l4pj")
+texture = ExtResource("7_kupig")
 
-[node name="leg_back" type="Bone2D" parent="Skeleton2D/torso" unique_id=1722429758]
+[node name="leg_back" type="Bone2D" parent="Skeleton2D/torso" unique_id=330888084]
 position = Vector2(-2, 5)
 rotation = 0.9385863
 scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(1, 0, 0, 1, -2, 5)
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/leg_back" unique_id=224379483]
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/leg_back" unique_id=2131157514]
 position = Vector2(5.9604645e-08, 5)
 rotation = 0.28563643
 scale = Vector2(0.07692309, 0.07692307)
-texture = ExtResource("14_cwiev")
+texture = ExtResource("8_gwb6m")
 
-[node name="foot_back" type="Bone2D" parent="Skeleton2D/torso/leg_back" unique_id=915577977]
+[node name="foot_back" type="Bone2D" parent="Skeleton2D/torso/leg_back" unique_id=1703272768]
 position = Vector2(0, 13)
 rotation = -0.6190026
 rest = Transform2D(1, 0, 0, 1, 0, 13)
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/leg_back/foot_back" unique_id=101142084]
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/leg_back/foot_back" unique_id=1479110296]
 position = Vector2(4.7683716e-07, 6)
 rotation = 0.001218468
 scale = Vector2(0.07692309, 0.07692307)
-texture = ExtResource("15_ihc6m")
+texture = ExtResource("9_qg7br")
 
-[node name="leg_front" type="Bone2D" parent="Skeleton2D/torso" unique_id=1643899803]
+[node name="leg_front" type="Bone2D" parent="Skeleton2D/torso" unique_id=406638614]
 position = Vector2(3, 5)
 rotation = -0.48744807
 rest = Transform2D(1, 0, 0, 1, 3, 5)
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/leg_front" unique_id=139299866]
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/leg_front" unique_id=455405359]
 position = Vector2(5.9604645e-08, 5)
 rotation = 0.28563643
 scale = Vector2(0.07692309, 0.07692307)
-texture = ExtResource("14_cwiev")
+texture = ExtResource("8_gwb6m")
 
-[node name="foot_front" type="Bone2D" parent="Skeleton2D/torso/leg_front" unique_id=764762582]
+[node name="foot_front" type="Bone2D" parent="Skeleton2D/torso/leg_front" unique_id=1804361323]
 position = Vector2(0, 13)
 rotation = -0.46727467
-scale = Vector2(0.99999917, 0.99999917)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(1, 0, 0, 1, 0, 13)
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/leg_front/foot_front" unique_id=489628231]
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/leg_front/foot_front" unique_id=237897019]
 position = Vector2(4.7683716e-07, 6)
 rotation = 0.001218468
 scale = Vector2(0.07692309, 0.07692307)
-texture = ExtResource("15_ihc6m")
+texture = ExtResource("9_qg7br")
 
-[node name="shoulder" type="Bone2D" parent="Skeleton2D/torso" unique_id=1408074164]
+[node name="shoulder" type="Bone2D" parent="Skeleton2D/torso" unique_id=983322577]
 position = Vector2(6, -12)
 rotation = 1.6427035
 rest = Transform2D(1, 0, 0, 1, 6, -12)
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/shoulder" unique_id=137034342]
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/shoulder" unique_id=1084191959]
 position = Vector2(1, 1.9999995)
 scale = Vector2(0.07692309, 0.07692307)
-texture = ExtResource("16_seltl")
+texture = ExtResource("10_dydxc")
 
-[node name="arm" type="Bone2D" parent="Skeleton2D/torso/shoulder" unique_id=1849955954]
+[node name="arm" type="Bone2D" parent="Skeleton2D/torso/shoulder" unique_id=302411143]
 position = Vector2(0, 10)
 rotation = -0.02005623
 rest = Transform2D(1, 0, 0, 1, 0, 10)
 
-[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/shoulder/arm" unique_id=536306743]
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/shoulder/arm" unique_id=505165934]
 position = Vector2(1, 1.9999995)
 scale = Vector2(0.07692309, 0.07692307)
-texture = ExtResource("17_tni2m")
+texture = ExtResource("11_voqix")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1918598455]
-libraries/ = SubResource("AnimationLibrary_yprbq")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1769232224]
+libraries/ = SubResource("AnimationLibrary_ld82m")
 speed_scale = 3.0
 
-[node name="animator" type="Node2D" parent="." unique_id=2009964568]
-script = ExtResource("18_3nr6l")
+[node name="animator" type="Node2D" parent="." unique_id=1992353394]
+script = ExtResource("12_ld82m")

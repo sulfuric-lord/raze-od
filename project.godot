@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="raze-overdrive"
-run/main_scene="res://obj/main_scene.tscn"
+run/main_scene="uid://cybt5f4o5x7ni"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

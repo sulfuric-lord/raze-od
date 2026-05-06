@@ -8,6 +8,7 @@ signal died(entity)
 
 func _ready() -> void:
 	add_to_group("entities")
+	add_to_group("player")
 	$stats.died.connect(_on_stats_died)
 	
 func _physics_process(delta: float) -> void:

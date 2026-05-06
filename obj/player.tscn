@@ -353,7 +353,7 @@ texture = ExtResource("12_jnxdb")
 [node name="head" type="Bone2D" parent="Skeleton2D/torso" unique_id=1072931867]
 position = Vector2(0, -19)
 rotation = 0.091999754
-scale = Vector2(0.99999803, 0.99999803)
+scale = Vector2(0.999998, 0.999998)
 rest = Transform2D(1, 0, 0, 1, 0, -19)
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/head" unique_id=2044553778]

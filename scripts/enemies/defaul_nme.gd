@@ -49,6 +49,9 @@ func _ready():
 	add_to_group("entities")
 	
 func _physics_process(delta):
+	if is_dead:
+		return
+	
 	think(delta)
 	
 	match current_state:

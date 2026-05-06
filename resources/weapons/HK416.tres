@@ -8,12 +8,11 @@
 script = ExtResource("2_1pd08")
 name = "H&K416"
 projectile = ExtResource("1_6eq3r")
-dmg_mult = 1.0
+dmg_mult = 1000.0
 spread = 8.0
-proj_count = 1
-ammo = 30
-reload = 1.5
-fire_rate = 8.0
+proj_count = 5
+ammo = 99999
+fire_rate = 200.0
 proj_speed_mult = 1.0
 is_auto = true
 fire_type = 1

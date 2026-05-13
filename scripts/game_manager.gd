@@ -50,6 +50,11 @@ func _process(delta):
 			save_game()
 			await get_tree().process_frame
 			call_deferred("_go_to_win")
+		
+		if player_deaths >= 3:
+			game_ended = true
+			await get_tree().process_frame
+			call_deferred("game_over")
 
 func cleanup_entities():
 	enemies = enemies.filter(func(e):
@@ -154,7 +159,10 @@ func _go_to_win():
 		tree.change_scene_to_file("res://scenes/win_level.tscn")
 
 func game_over():
-	pass
+	var tree = Engine.get_main_loop() as SceneTree
+	
+	if tree:
+		tree.change_scene_to_file("res://scenes/game_over.tscn")
 
 func spawn_enemy_at_points(points):
 	for point in points:

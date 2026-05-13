@@ -5,6 +5,12 @@ extends CharacterBody2D
 var is_dead := false
 signal died(entity)
 
+@onready var stats = $stats
+
+var maxHp:
+	get:
+		return stats.maxHp
+
 
 func _ready() -> void:
 	add_to_group("entities")

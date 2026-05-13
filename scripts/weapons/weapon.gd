@@ -12,13 +12,16 @@ var reload_timers: Array[float] = []
 var is_reloading: Array[bool] = []
 var displayable_ammo: String = ""
 
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var firepoint = get_node("Sprite2D/firepoint")
+
 func _ready() -> void:
 	for w in weapons:
 		ammo_list.append(w.ammo)
 		reload_timers.append(0.0)
 		is_reloading.append(false)
-	pass
-		
+	
+	update_weapon_visual()
 
 func _process(delta: float) -> void:
 	if not_player:
@@ -66,6 +69,8 @@ func switch(new_idx: int):
 		return
 	idx = new_idx
 	fire_timer = 0
+	update_weapon_visual()
+	
 
 func shoot():
 	
@@ -93,7 +98,7 @@ func shoot():
 	fire_timer = 1.0 / w.fire_rate
 	
 func shoot_hitscan(w, dir: Vector2):
-	var from = global_position
+	var from = firepoint.global_position
 	var to = from + w.range * dir
 	
 	var space = get_world_2d().direct_space_state
@@ -143,3 +148,7 @@ func ai_shoot(dir: Vector2):
 	
 	if fire_timer <= 0 and ammo_list[idx] > 0:
 		shoot()
+
+func update_weapon_visual():
+	var w := weapons[idx]
+	sprite.texture = w.sprite

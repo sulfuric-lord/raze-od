@@ -255,6 +255,9 @@ func find_enemy(enemies):
 	return candidates.pick_random()
 
 func find_jp_same_level():
+	if not is_instance_valid(current_target):
+		return null
+		
 	var forward_correct = null
 	var forward_correct_dist = INF
 
@@ -267,6 +270,9 @@ func find_jp_same_level():
 	var back_wrong = null
 	var back_wrong_dist = INF
 	
+	if not is_instance_valid(current_target):
+		return null
+
 	var to_target = current_target.global_position - global_position
 	var target_dir = get_dir(to_target.x)
 	

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cd36ifprr7sww"]
+
+[ext_resource type="Texture2D" uid="uid://lmaslxnw3gv2" path="res://sprites/tiles/lvl12small.png" id="1_a5hhl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwocy"]
+size = Vector2(348, 45)
+
+[node name="small_platform" type="StaticBody2D" unique_id=397906751]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1881925576]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_uwocy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1142511080]
+position = Vector2(4.4999924, 0)
+scale = Vector2(1.2779455, 0.7)
+texture = ExtResource("1_a5hhl")

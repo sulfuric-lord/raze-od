@@ -331,6 +331,14 @@ script = ExtResource("7_7rt03")
 not_player = false
 weapons = Array[ExtResource("8_ixpqg")]([ExtResource("9_8x5mn"), ExtResource("10_8x5mn"), ExtResource("11_uwt3n")])
 
+[node name="Sprite2D" type="Sprite2D" parent="Weapon" unique_id=403368045]
+z_index = 1
+position = Vector2(25, -25)
+scale = Vector2(0.2, 0.2)
+
+[node name="firepoint" type="Node2D" parent="Weapon/Sprite2D" unique_id=556308456]
+position = Vector2(50, 0)
+
 [node name="Team" type="Node2D" parent="." unique_id=1715322058]
 script = ExtResource("12_i2kr1")
 team = 1
@@ -353,7 +361,7 @@ texture = ExtResource("12_jnxdb")
 [node name="head" type="Bone2D" parent="Skeleton2D/torso" unique_id=1072931867]
 position = Vector2(0, -19)
 rotation = 0.091999754
-scale = Vector2(0.999998, 0.999998)
+scale = Vector2(0.99999684, 0.99999684)
 rest = Transform2D(1, 0, 0, 1, 0, -19)
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/torso/head" unique_id=2044553778]
@@ -433,3 +441,4 @@ speed_scale = 3.0
 
 [node name="animator" type="Node2D" parent="." unique_id=2009964568]
 script = ExtResource("18_3nr6l")
+is_player = true

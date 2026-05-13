@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bxdqaw8ln8chf" path="res://obj/enemies/defaul_nme.tscn" id="7_j8vkp"]
 [ext_resource type="PackedScene" uid="uid://d2h4kr7bia0fh" path="res://obj/game_manager.tscn" id="8_oykdx"]
 [ext_resource type="PackedScene" uid="uid://7h8qh73pnkmj" path="res://obj/enemies/default_ally.tscn" id="9_cev7d"]
-[ext_resource type="PackedScene" uid="uid://b7kjp0lkam2tu" path="res://obj/level_editor/medium_platform.tscn" id="10_xtaj5"]
-[ext_resource type="PackedScene" uid="uid://cqjrtkocqiccc" path="res://obj/level_editor/small_platform.tscn" id="11_m8ews"]
+[ext_resource type="PackedScene" uid="uid://b7kjp0lkam2tu" path="res://obj/level_editor/medium_platform12.tscn" id="10_xtaj5"]
+[ext_resource type="PackedScene" uid="uid://cqjrtkocqiccc" path="res://obj/level_editor/small_platform4.tscn" id="11_m8ews"]
 [ext_resource type="PackedScene" uid="uid://bm7afcanfeg54" path="res://obj/level_editor/jump_point.tscn" id="12_la4bi"]
 [ext_resource type="Script" uid="uid://ci5bab3uaekqv" path="res://scripts/spawn_point.gd" id="13_o7eol"]
 [ext_resource type="Script" uid="uid://bblb8y5y0883p" path="res://scripts/level4trigger.gd" id="14_3n7tn"]
@@ -49,6 +49,11 @@ offset_right = 437.0
 offset_bottom = -1.0
 script = ExtResource("6_ivevn")
 g = NodePath("../../GameManager")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer" unique_id=963104965]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground" unique_id=1758898732]
+motion_scale = Vector2(0.1, 0.1)
 
 [node name="GameManager" parent="." unique_id=936136611 instance=ExtResource("8_oykdx")]
 position = Vector2(708, 758)

@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bm7afcanfeg54" path="res://obj/level_editor/jump_point.tscn" id="13_yeq8b"]
 [ext_resource type="PackedScene" uid="uid://6arh4ne8a88d" path="res://obj/level_editor/spawn_point.tscn" id="14_invaa"]
 [ext_resource type="PackedScene" uid="uid://c4c7a24b205mq" path="res://obj/level_editor/health_point.tscn" id="15_88b2t"]
+[ext_resource type="AudioStream" uid="uid://dk8o0h5a0kro4" path="res://lvl3.mp3" id="16_a114e"]
 
 [node name="Node2D" type="Node2D" unique_id=326341057]
 
@@ -70,7 +71,7 @@ enemy_scene = ExtResource("9_qyu38")
 max_enemies = 4
 ally_scene = ExtResource("10_8vbrh")
 max_allies = 3
-current_level = 1
+current_level = 3
 goal = 80
 
 [node name="floor" type="Node2D" parent="." unique_id=297382774]
@@ -313,3 +314,10 @@ position = Vector2(-359, 135)
 
 [node name="health_point4" parent="." unique_id=1031804563 instance=ExtResource("15_88b2t")]
 position = Vector2(355, 116)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=303750842]
+stream = ExtResource("16_a114e")
+autoplay = true
+max_distance = 1000000.0
+attenuation = 1e-05
+bus = &"Music"

@@ -44,6 +44,11 @@ signal died(entity)
 var is_dead:bool = false
 
 func _ready():
+	weapon.weapons.shuffle()
+	weapon.idx = 0
+	weapon.update_weapon_visual()
+	speed *= randf_range(0.9, 1.1)
+	maxHp *= randf_range(0.9, 1.9)
 	hp = maxHp
 	jps = get_jps()
 	add_to_group("entities")

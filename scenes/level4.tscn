@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bm7afcanfeg54" path="res://obj/level_editor/jump_point.tscn" id="12_la4bi"]
 [ext_resource type="Script" uid="uid://ci5bab3uaekqv" path="res://scripts/spawn_point.gd" id="13_o7eol"]
 [ext_resource type="Script" uid="uid://bblb8y5y0883p" path="res://scripts/level4trigger.gd" id="14_3n7tn"]
+[ext_resource type="AudioStream" uid="uid://b4avqo5scq3ga" path="res://lvl4.mp3" id="15_8f67t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g1xgd"]
 size = Vector2(192, 88)
@@ -265,3 +266,9 @@ script = ExtResource("14_3n7tn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Room/Trigger" unique_id=663770755]
 shape = SubResource("RectangleShape2D_g1xgd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1633864470]
+stream = ExtResource("15_8f67t")
+autoplay = true
+attenuation = 1e-05
+bus = &"Music"

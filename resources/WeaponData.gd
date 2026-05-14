@@ -19,3 +19,4 @@ enum FireType {
 @export var range: float = 2000
 @export var tracer_scene: PackedScene
 @export var tracer_damage: float
+@export var shoot_sound: AudioStream

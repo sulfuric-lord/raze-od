@@ -339,6 +339,9 @@ scale = Vector2(0.2, 0.2)
 [node name="firepoint" type="Node2D" parent="Weapon/Sprite2D" unique_id=556308456]
 position = Vector2(50, 0)
 
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="Weapon" unique_id=1577216989]
+bus = &"SFX"
+
 [node name="Team" type="Node2D" parent="." unique_id=1715322058]
 script = ExtResource("12_i2kr1")
 team = 1

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c65jmv66lr7np" path="res://scripts/enemies/defaul_nme.gd" id="1_fwgem"]
 [ext_resource type="Script" uid="uid://xqjbl2nasjl" path="res://scripts/weapons/weapon.gd" id="3_pxh1b"]
 [ext_resource type="Script" uid="uid://6bx7c2eh6iwr" path="res://resources/WeaponData.gd" id="4_qxcin"]
+[ext_resource type="Resource" uid="uid://bqeut0a8nlmcc" path="res://resources/weapons/HK416.tres" id="5_kupig"]
 [ext_resource type="Resource" uid="uid://chty5eht1ewb0" path="res://resources/weapons/remmington870.tres" id="5_o3vc2"]
 [ext_resource type="Script" uid="uid://r6d6dafxa0u5" path="res://scripts/team.gd" id="6_2vhic"]
 [ext_resource type="Texture2D" uid="uid://nlcdel838x4f" path="res://sprites/torso.png" id="6_ld82m"]
@@ -310,7 +311,7 @@ debug_color = Color(0.9631831, 3.080368e-06, 0.5030446, 0.41960785)
 
 [node name="Weapon" type="Node2D" parent="." unique_id=1791825515]
 script = ExtResource("3_pxh1b")
-weapons = Array[ExtResource("4_qxcin")]([ExtResource("5_o3vc2")])
+weapons = Array[ExtResource("4_qxcin")]([ExtResource("5_o3vc2"), ExtResource("5_kupig")])
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon" unique_id=805162886]
 z_index = 1
@@ -319,6 +320,9 @@ scale = Vector2(0.2, 0.2)
 
 [node name="firepoint" type="Node2D" parent="Weapon/Sprite2D" unique_id=278532958]
 position = Vector2(50, 0)
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="Weapon" unique_id=683513665]
+bus = &"SFX"
 
 [node name="Team" type="Node2D" parent="." unique_id=1962137129]
 script = ExtResource("6_2vhic")
@@ -343,7 +347,7 @@ texture = ExtResource("6_ld82m")
 [node name="head" type="Bone2D" parent="Skeleton2D/torso" unique_id=980826377]
 position = Vector2(0, -19)
 rotation = 0.091999754
-scale = Vector2(0.9999984, 0.9999984)
+scale = Vector2(0.9999979, 0.9999979)
 rest = Transform2D(1, 0, 0, 1, 0, -19)
 editor_settings/show_bone_gizmo = false
 

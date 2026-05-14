@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://c5g3tiq0fgi0w"]
 
+[ext_resource type="VideoStream" uid="uid://d2p5lvfa4veir" path="res://sprites/bg.ogv" id="1_wqhvx"]
+[ext_resource type="Script" uid="uid://c48ryu4nno8ou" path="res://scenes/return.gd" id="1_xeevv"]
+
 [node name="Control" type="Control" unique_id=1085964674]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +10,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1606932031]
+modulate = Color(0.53, 0.53, 0.53, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_wqhvx")
+speed_scale = 0.5
+autoplay = true
+expand = true
+loop = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1812628673]
 layout_mode = 1
@@ -45,3 +62,6 @@ grow_vertical = 0
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "To main menu"
+script = ExtResource("1_xeevv")
+
+[connection signal="pressed" from="VBoxContainer2/Button" to="VBoxContainer2/Button" method="_on_pressed"]

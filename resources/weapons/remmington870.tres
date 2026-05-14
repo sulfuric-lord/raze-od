@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://6bx7c2eh6iwr" path="res://resources/WeaponData.gd" id="2_cgixj"]
 [ext_resource type="Texture2D" uid="uid://dlkago2ypeky" path="res://sprites/weapons/shotgun.png" id="3_5dm6k"]
 [ext_resource type="PackedScene" uid="uid://d3h6toosgo2fl" path="res://resources/default_tracer.tscn" id="3_cgixj"]
+[ext_resource type="AudioStream" uid="uid://b41oakjx3rs5e" path="res://shotgun.mp3" id="3_ebb4y"]
 
 [resource]
 script = ExtResource("2_cgixj")
@@ -20,3 +21,4 @@ sprite = ExtResource("3_5dm6k")
 fire_type = 1
 tracer_scene = ExtResource("3_cgixj")
 tracer_damage = 1.0
+shoot_sound = ExtResource("3_ebb4y")

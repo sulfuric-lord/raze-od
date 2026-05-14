@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var not_player: bool = true
+@onready var shoot_sound = $ShootSound
 
 @export var weapons : Array[WeaponData]
 var idx : int = 0
@@ -75,6 +76,10 @@ func switch(new_idx: int):
 func shoot():
 	
 	var w := weapons[idx]
+	if w.shoot_sound:
+		shoot_sound.stream = w.shoot_sound
+		shoot_sound.pitch_scale = randf_range(0.95, 1.05)
+		shoot_sound.play()
 
 	for i in range(w.proj_count):
 		var spread_rad = deg_to_rad(w.spread)

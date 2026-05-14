@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bqo1pe2a7kn5l" path="res://obj/player.tscn" id="1_r6p65"]
 [ext_resource type="PackedScene" uid="uid://rgjoxytlwfpg" path="res://obj/UI/test_ui.tscn" id="2_si52b"]
 [ext_resource type="PackedScene" uid="uid://cny7dl67603p" path="res://obj/UI/hpui.tscn" id="3_01n6w"]
+[ext_resource type="FontFile" uid="uid://dh3sabue70dfg" path="res://resources/font.ttf" id="3_6u1mn"]
 [ext_resource type="Script" uid="uid://c23gkggqhbrsb" path="res://scripts/ui/hpUI.gd" id="4_6u1mn"]
 [ext_resource type="PackedScene" uid="uid://crr274idv6wg1" path="res://obj/UI/count.tscn" id="5_bcnxi"]
 [ext_resource type="Script" uid="uid://5sygs7d61r7x" path="res://scripts/ui/scoreUI.gd" id="6_7nt27"]
@@ -15,6 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://bm7afcanfeg54" path="res://obj/level_editor/jump_point.tscn" id="12_u0fll"]
 [ext_resource type="PackedScene" uid="uid://6arh4ne8a88d" path="res://obj/level_editor/spawn_point.tscn" id="14_si52b"]
 [ext_resource type="PackedScene" uid="uid://c4c7a24b205mq" path="res://obj/level_editor/health_point.tscn" id="15_01n6w"]
+[ext_resource type="AudioStream" uid="uid://c0i4cw0gwg3y5" path="res://lvl1.mp3" id="16_01n6w"]
+
+[sub_resource type="Theme" id="Theme_bcnxi"]
+default_font = ExtResource("3_6u1mn")
+default_font_size = 24
+
+[sub_resource type="Theme" id="Theme_6u1mn"]
+default_font = ExtResource("3_6u1mn")
+default_font_size = 24
+Label/colors/font_color = Color(1, 0.19, 0.19, 1)
 
 [node name="Node2D" type="Node2D" unique_id=326341057]
 
@@ -27,30 +38,40 @@ position = Vector2(666, -105)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=784231951]
 
 [node name="Control" parent="CanvasLayer" unique_id=572074525 node_paths=PackedStringArray("player") instance=ExtResource("2_si52b")]
-offset_left = 9.0
-offset_top = 576.0
-offset_right = 9.0
-offset_bottom = 576.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 53.0
+offset_top = -128.0
+offset_right = 53.0
+offset_bottom = -128.0
+grow_horizontal = 1
+grow_vertical = 0
+theme = SubResource("Theme_bcnxi")
 player = NodePath("../../Node2D")
-metadata/_edit_use_anchors_ = true
 
 [node name="Control2" parent="CanvasLayer" unique_id=577444824 node_paths=PackedStringArray("player") instance=ExtResource("3_01n6w")]
-offset_left = 143.0
-offset_top = 574.0
-offset_right = 143.0
-offset_bottom = 574.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 53.0
+offset_top = -71.0
+offset_right = 53.0
+offset_bottom = -71.0
+grow_horizontal = 1
+grow_vertical = 0
+theme = SubResource("Theme_6u1mn")
 script = ExtResource("4_6u1mn")
 player = NodePath("../../Node2D")
-metadata/_edit_use_anchors_ = true
 
 [node name="Count" parent="CanvasLayer" unique_id=1208927834 node_paths=PackedStringArray("g") instance=ExtResource("5_bcnxi")]
-offset_left = 445.0
-offset_top = 1.0
-offset_right = 445.0
-offset_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
 script = ExtResource("6_7nt27")
 g = NodePath("../../GameManager")
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer" unique_id=140756636]
 
@@ -313,3 +334,10 @@ position = Vector2(-359, 135)
 
 [node name="health_point4" parent="." unique_id=1031804563 instance=ExtResource("15_01n6w")]
 position = Vector2(355, 116)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1962946045]
+stream = ExtResource("16_01n6w")
+autoplay = true
+max_distance = 1000000.0
+attenuation = 1e-05
+bus = &"Music"

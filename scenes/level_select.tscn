@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d4k2jsrojqxnp"]
 
 [ext_resource type="Script" uid="uid://m1dnno2hrnq8" path="res://scenes/level_select.gd" id="1_3shnc"]
+[ext_resource type="VideoStream" uid="uid://d2p5lvfa4veir" path="res://sprites/bg.ogv" id="2_p0wlc"]
 
 [node name="Control" type="Control" unique_id=1068100281]
 layout_mode = 3
@@ -11,10 +12,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3shnc")
 
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1743906655]
+modulate = Color(0.53, 0.53, 0.53, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_p0wlc")
+speed_scale = 0.5
+autoplay = true
+expand = true
+loop = true
+
 [node name="CenterContainer2" type="CenterContainer" parent="." unique_id=1510118030]
 layout_mode = 1
+offset_left = 49.0
 offset_top = 68.0
-offset_right = 354.0
+offset_right = 403.0
 offset_bottom = 126.0
 
 [node name="Label" type="Label" parent="CenterContainer2" unique_id=2091821192]
@@ -52,9 +68,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -117.5
-offset_right = 239.0
-offset_bottom = 117.5
+offset_left = 34.0
+offset_top = -117.0
+offset_right = 273.0
+offset_bottom = 118.0
 grow_vertical = 2
 scale = Vector2(1.0126414, 1)
 

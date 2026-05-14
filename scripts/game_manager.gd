@@ -115,6 +115,7 @@ func _on_entity_died(entity):
 		check_win()
 	elif team == 1:
 		enemy_kills += 1
+		check_win()
 
 func save_game():
 	var data = {}
@@ -123,18 +124,19 @@ func save_game():
 		var file = FileAccess.open("user://save.json", FileAccess.READ)
 		data = JSON.parse_string(file.get_as_text())
 		file.close()
-	
 	if data == null:
 		data = {}
-	
-	data["last_level_updated"] = current_level
-	
+
+	data["last_completed_level"] = current_level
+
+	var previous = data.get("max_unlocked_level", 1)
+	data["max_unlocked_level"] = max(previous, current_level + 1)
+
 	data[str(current_level)] = {
 		"player_kills": player_kills,
 		"enemy_kills": enemy_kills,
 		"player_deaths": player_deaths
 	}
-	
 	print("SAVING:", data)
 	
 	var file = FileAccess.open("user://save.json", FileAccess.WRITE)
@@ -151,6 +153,11 @@ func check_win():
 		save_game()
 		await get_tree().process_frame
 		call_deferred("_go_to_win")
+	
+	if enemy_kills >= goal and not game_ended:
+		game_ended = true
+		await get_tree().process_frame
+		call_deferred("game_over")
 
 func _go_to_win():
 	var tree = Engine.get_main_loop() as SceneTree

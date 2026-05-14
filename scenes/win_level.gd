@@ -14,7 +14,7 @@ func load_and_show():
 	if data == null:
 		return
 	
-	var level = int(data.get("last_level_updated", 1))
+	var level = int(data.get("last_completed_level", 1))
 	var level_data = data.get(str(level), {})
 	
 	var kills = int(level_data.get("player_kills", 0))
@@ -24,3 +24,7 @@ func load_and_show():
 	
 	$VBoxContainer/Label2.text = "RAZE: %s // %s :ALIENS" % [kills, enemy_kills]
 	$VBoxContainer/Label3.text = "Your deaths: %s" % [deaths]
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

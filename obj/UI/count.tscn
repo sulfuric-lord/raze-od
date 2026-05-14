@@ -1,5 +1,12 @@
 [gd_scene format=3 uid="uid://crr274idv6wg1"]
 
+[ext_resource type="FontFile" uid="uid://dh3sabue70dfg" path="res://resources/font.ttf" id="1_kwxch"]
+
+[sub_resource type="Theme" id="Theme_mvdeu"]
+default_font = ExtResource("1_kwxch")
+default_font_size = 30
+Label/colors/font_color = Color(0.8, 0.8, 0.8, 1)
+
 [node name="Count" type="Control" unique_id=1208927834]
 layout_mode = 3
 anchors_preset = 15
@@ -10,7 +17,9 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="." unique_id=2030484317]
 layout_mode = 0
-offset_right = 47.0
-offset_bottom = 23.0
-scale = Vector2(1.6982638, 1.6982638)
+offset_left = -388.0
+offset_right = 388.0
+offset_bottom = 27.0
+theme = SubResource("Theme_mvdeu")
 text = "XX/XX"
+horizontal_alignment = 1

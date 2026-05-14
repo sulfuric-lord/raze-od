@@ -319,6 +319,9 @@ scale = Vector2(0.2, 0.2)
 [node name="firepoint" type="Node2D" parent="Weapon/Sprite2D" unique_id=180931124]
 position = Vector2(50, 0)
 
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="Weapon" unique_id=1733768947]
+bus = &"SFX"
+
 [node name="Team" type="Node2D" parent="." unique_id=1962137129]
 script = ExtResource("6_1fmsf")
 team = 2
@@ -342,7 +345,7 @@ texture = ExtResource("6_p0hry")
 [node name="head" type="Bone2D" parent="Skeleton2D/torso" unique_id=1300415558]
 position = Vector2(0, -19)
 rotation = 0.091999754
-scale = Vector2(0.999998, 0.999998)
+scale = Vector2(0.99999756, 0.99999756)
 rest = Transform2D(1, 0, 0, 1, 0, -19)
 editor_settings/show_bone_gizmo = false
 

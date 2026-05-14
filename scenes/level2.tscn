@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://rgjoxytlwfpg" path="res://obj/UI/test_ui.tscn" id="2_bo4dx"]
 [ext_resource type="PackedScene" uid="uid://cny7dl67603p" path="res://obj/UI/hpui.tscn" id="3_76toy"]
 [ext_resource type="Script" uid="uid://c23gkggqhbrsb" path="res://scripts/ui/hpUI.gd" id="4_8g4ke"]
+[ext_resource type="FontFile" uid="uid://dh3sabue70dfg" path="res://resources/font.ttf" id="4_g8vcy"]
 [ext_resource type="PackedScene" uid="uid://crr274idv6wg1" path="res://obj/UI/count.tscn" id="5_56gwk"]
 [ext_resource type="Script" uid="uid://5sygs7d61r7x" path="res://scripts/ui/scoreUI.gd" id="6_ve5ok"]
 [ext_resource type="PackedScene" uid="uid://bxdqaw8ln8chf" path="res://obj/enemies/defaul_nme.tscn" id="7_cleqw"]
@@ -15,6 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://bm7afcanfeg54" path="res://obj/level_editor/jump_point.tscn" id="12_wvb8j"]
 [ext_resource type="PackedScene" uid="uid://c4c7a24b205mq" path="res://obj/level_editor/health_point.tscn" id="13_56gwk"]
 [ext_resource type="PackedScene" uid="uid://6arh4ne8a88d" path="res://obj/level_editor/spawn_point.tscn" id="14_cqal4"]
+[ext_resource type="AudioStream" uid="uid://ca60fptwr46v1" path="res://lvl2.mp3" id="16_wvb8j"]
+
+[sub_resource type="Theme" id="Theme_cqal4"]
+default_font = ExtResource("4_g8vcy")
+default_font_size = 24
+
+[sub_resource type="Theme" id="Theme_o3sye"]
+default_font = ExtResource("4_g8vcy")
+default_font_size = 24
+Label/colors/font_color = Color(1, 0.19, 0.19, 1)
 
 [node name="Node2D" type="Node2D" unique_id=326341057]
 
@@ -22,35 +33,9 @@
 position = Vector2(201, 29)
 
 [node name="Node2D" parent="." unique_id=232303670 instance=ExtResource("1_xa7n4")]
-position = Vector2(666, -105)
+position = Vector2(-1984, -1602)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=784231951]
-
-[node name="Control" parent="CanvasLayer" unique_id=572074525 node_paths=PackedStringArray("player") instance=ExtResource("2_bo4dx")]
-offset_left = 9.0
-offset_top = 576.0
-offset_right = 9.0
-offset_bottom = 576.0
-player = NodePath("../../Node2D")
-metadata/_edit_use_anchors_ = true
-
-[node name="Control2" parent="CanvasLayer" unique_id=577444824 node_paths=PackedStringArray("player") instance=ExtResource("3_76toy")]
-offset_left = 143.0
-offset_top = 574.0
-offset_right = 143.0
-offset_bottom = 574.0
-script = ExtResource("4_8g4ke")
-player = NodePath("../../Node2D")
-metadata/_edit_use_anchors_ = true
-
-[node name="Count" parent="CanvasLayer" unique_id=1208927834 node_paths=PackedStringArray("g") instance=ExtResource("5_56gwk")]
-offset_left = 445.0
-offset_top = 1.0
-offset_right = 445.0
-offset_bottom = 1.0
-script = ExtResource("6_ve5ok")
-g = NodePath("../../GameManager")
-metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer" unique_id=140756636]
 
@@ -63,6 +48,43 @@ modulate = Color(0.62, 0.62, 0.62, 1)
 position = Vector2(14, -203)
 scale = Vector2(2.441362, 3.1878939)
 texture = ExtResource("7_wvb8j")
+
+[node name="Control" parent="CanvasLayer" unique_id=572074525 node_paths=PackedStringArray("player") instance=ExtResource("2_bo4dx")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 53.0
+offset_top = -128.0
+offset_right = 53.0
+offset_bottom = -128.0
+grow_horizontal = 1
+grow_vertical = 0
+theme = SubResource("Theme_cqal4")
+player = NodePath("../../Node2D")
+
+[node name="Control2" parent="CanvasLayer" unique_id=577444824 node_paths=PackedStringArray("player") instance=ExtResource("3_76toy")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_left = 53.0
+offset_top = -71.0
+offset_right = 53.0
+offset_bottom = -71.0
+grow_horizontal = 1
+grow_vertical = 0
+theme = SubResource("Theme_o3sye")
+script = ExtResource("4_8g4ke")
+player = NodePath("../../Node2D")
+
+[node name="Count" parent="CanvasLayer" unique_id=1208927834 node_paths=PackedStringArray("g") instance=ExtResource("5_56gwk")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+grow_vertical = 1
+script = ExtResource("6_ve5ok")
+g = NodePath("../../GameManager")
+is_timer = true
 
 [node name="GameManager" parent="." unique_id=936136611 instance=ExtResource("8_wvb8j")]
 position = Vector2(909, 787)
@@ -281,3 +303,10 @@ position = Vector2(-359, 135)
 
 [node name="health_point4" parent="." unique_id=1031804563 instance=ExtResource("13_56gwk")]
 position = Vector2(355, 116)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=95065072]
+stream = ExtResource("16_wvb8j")
+autoplay = true
+max_distance = 1000000.0
+attenuation = 1e-05
+bus = &"Music"

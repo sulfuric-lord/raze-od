@@ -103,6 +103,8 @@ func shoot():
 	fire_timer = 1.0 / w.fire_rate
 	
 func shoot_hitscan(w, dir: Vector2):
+	if !is_inside_tree():
+		return
 	var from = firepoint.global_position
 	var to = from + w.range * dir
 	
@@ -129,6 +131,8 @@ func shoot_hitscan(w, dir: Vector2):
 	spawn_tracer(from, hit_pos, w)
 	
 func spawn_tracer(from: Vector2, to: Vector2, w):
+	if !is_inside_tree():
+		return
 	if w.tracer_scene == null:
 		return
 		

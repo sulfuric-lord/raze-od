@@ -39,10 +39,14 @@ func die():
 	
 	player.visible = false
 	
-	respawn(player)
+	call_deferred("respawn", player)
 
 func respawn(player):
+	if !is_inside_tree():
+		return
+		
 	await get_tree().create_timer(3.0).timeout
+
 	
 	var spawn_points = get_tree().get_nodes_in_group("spawn_points")
 	
@@ -54,7 +58,6 @@ func respawn(player):
 	
 	player.global_position = spawn.global_position
 	
-	# хп фулл
 	hp = maxHp
 	
 	player.visible = true

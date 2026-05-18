@@ -74,4 +74,5 @@ text = "Exit"
 script = ExtResource("2_ekxnf")
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/main menu" to="CenterContainer/VBoxContainer/main menu" method="_on_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/options" to="CenterContainer/VBoxContainer/main menu" method="_on_options_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/exit" to="CenterContainer/VBoxContainer/main menu" method="_on_exit_pressed"]

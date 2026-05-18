@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cqjrtkocqiccc"]
 
-[ext_resource type="Texture2D" uid="uid://fs332ebe4fbf" path="res://sprites/player_001.png" id="1_nsl2t"]
+[ext_resource type="Texture2D" uid="uid://begq4khk22pu5" path="res://sprites/tiles/lvl4small.png" id="1_dj1f5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwocy"]
 size = Vector2(348, 40)
@@ -11,5 +11,5 @@ size = Vector2(348, 40)
 shape = SubResource("RectangleShape2D_uwocy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1142511080]
-scale = Vector2(10.960001, 0.63999975)
-texture = ExtResource("1_nsl2t")
+scale = Vector2(1.3212122, 0.7848101)
+texture = ExtResource("1_dj1f5")

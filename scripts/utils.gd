@@ -5,7 +5,6 @@ static func get_damageable(node):
 	
 	while current:
 		if current.has_method("take_damage"):
-			print("Попали в:", current.name)
 			return current
 		current = current.get_parent()
 	
@@ -16,7 +15,6 @@ static func get_healable(node):
 	
 	while current:
 		if current.has_method("heal"):
-			print("отхилен:", current.name)
 			return current
 		current = current.get_parent()
 	

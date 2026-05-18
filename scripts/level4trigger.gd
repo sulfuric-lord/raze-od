@@ -17,6 +17,7 @@ func _on_body_entered(body):
 	
 	if body.is_in_group("player"):
 		activated = true
+		game_manager.start_room()
 		
 		var points = enemy_spawners.get_children()
-		game_manager.spawn_enemy_at_points(points)
+		game_manager.call_deferred("spawn_enemy_at_points", points)

@@ -22,6 +22,9 @@ var player_deaths := 0
 var survive_time := 180.0 # 3 минуты
 var level_timer := 0.0
 
+var room_active := false
+@export var rooms_left := 6
+
 func _ready():
 	add_to_group("GameManager")
 	spawn_points = get_tree().get_nodes_in_group("spawn_points")
@@ -34,6 +37,8 @@ func _process(delta):
 		return
 	
 	cleanup_entities()
+	if current_level == 4 and room_active and enemies.size() <= 0:
+		end_room()
 	if current_level <= 3:
 		if enemies.size() < max_enemies:
 			spawn_enemy()
@@ -100,7 +105,7 @@ func _on_entity_died(entity):
 		player_deaths += 1
 		
 		# Только для второго уровня
-		if current_level == 2 and not game_ended:
+		if (current_level == 2 or current_level == 4) and not game_ended:
 			game_ended = true
 			game_over()
 			return
@@ -180,3 +185,22 @@ func spawn_enemy_at_points(points):
 		
 		enemies.append(enemy)
 		connect_entity(enemy)
+
+
+func start_room():
+	room_active = true
+	
+	for d in get_tree().get_nodes_in_group("doors"):
+		d.close()
+
+func end_room():
+	room_active = false
+	rooms_left -= 1
+	
+	for d in get_tree().get_nodes_in_group("doors"):
+		d.open()
+	
+	if rooms_left <= 0:
+		game_ended = true
+		save_game()
+		call_deferred("_go_to_win")

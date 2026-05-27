@@ -17,17 +17,11 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="raze-overdrive"
 run/main_scene="uid://cybt5f4o5x7ni"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://resources/misc/icon.svg"
 
 [audio]
 
 buses/default_bus_layout="uid://csydt84pqw5tm"
-
-[file_customization]
-
-folder_colors={
-"res://obj/enemies/": "red"
-}
 
 [gui]
 

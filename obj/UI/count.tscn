@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://crr274idv6wg1"]
 
-[ext_resource type="FontFile" uid="uid://dh3sabue70dfg" path="res://resources/font.ttf" id="1_kwxch"]
+[ext_resource type="FontFile" uid="uid://dh3sabue70dfg" path="res://resources/misc/font.ttf" id="1_kwxch"]
 
 [sub_resource type="Theme" id="Theme_mvdeu"]
 default_font = ExtResource("1_kwxch")

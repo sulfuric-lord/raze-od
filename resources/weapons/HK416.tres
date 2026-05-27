@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://bqeut0a8nlmcc"]
 
-[ext_resource type="PackedScene" uid="uid://bcabk82t7hlpl" path="res://obj/projectile_default.tscn" id="1_6eq3r"]
-[ext_resource type="Script" uid="uid://6bx7c2eh6iwr" path="res://resources/WeaponData.gd" id="2_1pd08"]
-[ext_resource type="PackedScene" uid="uid://d3h6toosgo2fl" path="res://resources/default_tracer.tscn" id="3_1pd08"]
-[ext_resource type="Texture2D" uid="uid://dccuderpnvae5" path="res://sprites/weapons/rifle.png" id="3_870a6"]
-[ext_resource type="AudioStream" uid="uid://oudb7rybisjn" path="res://pistol_sound.mp3" id="3_kvhs6"]
+[ext_resource type="PackedScene" uid="uid://bcabk82t7hlpl" path="res://obj/weapon/projectile_default.tscn" id="1_6eq3r"]
+[ext_resource type="Script" uid="uid://6bx7c2eh6iwr" path="res://scripts/weapons/data/WeaponData.gd" id="2_1pd08"]
+[ext_resource type="PackedScene" uid="uid://d3h6toosgo2fl" path="res://obj/weapon/default_tracer.tscn" id="3_1pd08"]
+[ext_resource type="Texture2D" uid="uid://dccuderpnvae5" path="res://resources/sprites/weapons/rifle.png" id="3_870a6"]
+[ext_resource type="AudioStream" uid="uid://oudb7rybisjn" path="res://resources/audio/sfx/pistol_sound.mp3" id="3_kvhs6"]
 
 [resource]
 script = ExtResource("2_1pd08")

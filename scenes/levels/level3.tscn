@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://xjjs76k7rjnp" path="res://resources/sprites/bgs/lvl3bg.png" id="7_e40mx"]
 [ext_resource type="PackedScene" uid="uid://d2h4kr7bia0fh" path="res://obj/level_editor/game_manager.tscn" id="8_atr84"]
 [ext_resource type="PackedScene" uid="uid://bxdqaw8ln8chf" path="res://obj/entities/defaul_nme.tscn" id="9_qyu38"]
+[ext_resource type="PackedScene" uid="uid://drio571rhuiet" path="res://scenes/main_menu/pause.tscn" id="9_wt4k6"]
 [ext_resource type="PackedScene" uid="uid://7h8qh73pnkmj" path="res://obj/entities/default_ally.tscn" id="10_8vbrh"]
 [ext_resource type="PackedScene" uid="uid://b7y870beksl31" path="res://obj/level_editor/medium_platform3.tscn" id="11_e40mx"]
 [ext_resource type="PackedScene" uid="uid://dj7sav5jmq0bt" path="res://obj/level_editor/small_platform3.tscn" id="12_a114e"]
@@ -17,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://6arh4ne8a88d" path="res://obj/level_editor/spawn_point.tscn" id="14_invaa"]
 [ext_resource type="PackedScene" uid="uid://c4c7a24b205mq" path="res://obj/level_editor/health_point.tscn" id="15_88b2t"]
 [ext_resource type="AudioStream" uid="uid://dk8o0h5a0kro4" path="res://resources/audio/soundtrack/lvl3.mp3" id="16_a114e"]
+[ext_resource type="Script" uid="uid://d3tl4ngys5gh8" path="res://scripts/misc/audio_stream_player_2d.gd" id="19_wo5bm"]
 
 [sub_resource type="Theme" id="Theme_s4dsi"]
 default_font = ExtResource("4_y1e0c")
@@ -85,14 +87,18 @@ grow_vertical = 1
 script = ExtResource("6_6uuvf")
 g = NodePath("../../GameManager")
 
-[node name="GameManager" parent="." unique_id=936136611 instance=ExtResource("8_atr84")]
+[node name="Control3" parent="CanvasLayer" unique_id=1347286910 instance=ExtResource("9_wt4k6")]
+visible = false
+
+[node name="GameManager" parent="." unique_id=936136611 node_paths=PackedStringArray("pause") instance=ExtResource("8_atr84")]
 position = Vector2(909, 787)
 enemy_scene = ExtResource("9_qyu38")
 max_enemies = 4
 ally_scene = ExtResource("10_8vbrh")
-max_allies = 3
+max_allies = 2
 current_level = 3
 goal = 80
+pause = NodePath("../CanvasLayer/Control3")
 
 [node name="floor" type="Node2D" parent="." unique_id=297382774]
 position = Vector2(201, 29)
@@ -200,10 +206,6 @@ position = Vector2(700, 0)
 
 [node name="jps" type="Node2D" parent="." unique_id=1574282145]
 
-[node name="jump_point" parent="jps" unique_id=1913657880 instance=ExtResource("13_yeq8b")]
-position = Vector2(43, 446)
-jump_direction = Vector2(1, -1)
-
 [node name="jump_point2" parent="jps" unique_id=1921939456 instance=ExtResource("13_yeq8b")]
 position = Vector2(353, 204)
 jump_direction = Vector2(1, -1)
@@ -252,9 +254,6 @@ jump_direction = Vector2(1, -1)
 
 [node name="jps2" type="Node2D" parent="." unique_id=955382213]
 scale = Vector2(-1, 1)
-
-[node name="jump_point" parent="jps2" unique_id=1622760163 instance=ExtResource("13_yeq8b")]
-position = Vector2(43, 446)
 
 [node name="jump_point2" parent="jps2" unique_id=1338612109 instance=ExtResource("13_yeq8b")]
 position = Vector2(353, 204)
@@ -341,3 +340,4 @@ autoplay = true
 max_distance = 1000000.0
 attenuation = 1e-05
 bus = &"Music"
+script = ExtResource("19_wo5bm")

@@ -6,6 +6,7 @@ extends Node
 @export var max_allies: int = 4
 @export var current_level: int
 @export var goal: int
+@export var pause: Control
 
 var game_ended := false
 
@@ -18,7 +19,6 @@ var enemy_kills := 0
 
 var player_deaths := 0
 
-# Для второго уровня
 var survive_time := 180.0 # 3 минуты
 var level_timer := 0.0
 
@@ -26,6 +26,7 @@ var room_active := false
 @export var rooms_left := 6
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	add_to_group("GameManager")
 	spawn_points = get_tree().get_nodes_in_group("spawn_points")
 	
@@ -202,3 +203,13 @@ func end_room():
 		game_ended = true
 		save_game()
 		call_deferred("_go_to_win")
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().paused = !get_tree().paused
+
+		if get_tree().paused:
+			pause.update_info()
+			pause.visible = true
+		else:
+			pause.visible = false

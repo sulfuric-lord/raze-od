@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://crr274idv6wg1" path="res://obj/UI/count.tscn" id="7_m1gbu"]
 [ext_resource type="Script" uid="uid://5sygs7d61r7x" path="res://scripts/player/ui/scoreUI.gd" id="8_yw4fb"]
 [ext_resource type="PackedScene" uid="uid://d2h4kr7bia0fh" path="res://obj/level_editor/game_manager.tscn" id="9_1wpw8"]
+[ext_resource type="PackedScene" uid="uid://drio571rhuiet" path="res://scenes/main_menu/pause.tscn" id="9_ev8xs"]
 [ext_resource type="PackedScene" uid="uid://bxdqaw8ln8chf" path="res://obj/entities/defaul_nme.tscn" id="10_w1hcc"]
 [ext_resource type="PackedScene" uid="uid://7h8qh73pnkmj" path="res://obj/entities/default_ally.tscn" id="11_ph4mq"]
 [ext_resource type="PackedScene" uid="uid://ouua5m341uv0" path="res://obj/level_editor/medium_platform4.tscn" id="12_npa1m"]
@@ -18,6 +19,8 @@
 [ext_resource type="Script" uid="uid://bblb8y5y0883p" path="res://scripts/levels/level4trigger.gd" id="16_2c5pw"]
 [ext_resource type="AudioStream" uid="uid://b4avqo5scq3ga" path="res://resources/audio/soundtrack/lvl4.mp3" id="17_7cvth"]
 [ext_resource type="Script" uid="uid://elklnxdcydic" path="res://scripts/levels/medium_platform_4.gd" id="18_jxa0w"]
+[ext_resource type="Script" uid="uid://d3tl4ngys5gh8" path="res://scripts/misc/audio_stream_player_2d.gd" id="19_qtppw"]
+[ext_resource type="PackedScene" uid="uid://c4c7a24b205mq" path="res://obj/level_editor/health_point.tscn" id="20_q6dln"]
 
 [sub_resource type="Theme" id="Theme_j8vkp"]
 default_font = ExtResource("4_qtppw")
@@ -84,14 +87,18 @@ grow_vertical = 1
 script = ExtResource("8_yw4fb")
 g = NodePath("../../GameManager")
 
-[node name="GameManager" parent="." unique_id=936136611 instance=ExtResource("9_1wpw8")]
-position = Vector2(708, 758)
+[node name="Control3" parent="CanvasLayer" unique_id=1347286910 instance=ExtResource("9_ev8xs")]
+visible = false
+
+[node name="GameManager" parent="." unique_id=936136611 node_paths=PackedStringArray("pause") instance=ExtResource("9_1wpw8")]
+position = Vector2(724, 758)
 enemy_scene = ExtResource("10_w1hcc")
 max_enemies = 4
 ally_scene = ExtResource("11_ph4mq")
 max_allies = 3
 current_level = 4
-goal = 10
+goal = 24
+pause = NodePath("../CanvasLayer/Control3")
 
 [node name="Room1" type="Node2D" parent="." unique_id=1860497183]
 
@@ -269,11 +276,11 @@ position = Vector2(-1168, 419)
 [node name="enemy_spawners" type="Node2D" parent="Room1" unique_id=580560884]
 
 [node name="spawn_point" type="Node2D" parent="Room1/enemy_spawners" unique_id=365801426]
-position = Vector2(-2063, -627)
+position = Vector2(-2026, -703)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point2" type="Node2D" parent="Room1/enemy_spawners" unique_id=680488850]
-position = Vector2(-2055, -117)
+position = Vector2(-2034, -186)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point3" type="Node2D" parent="Room1/enemy_spawners" unique_id=1407265420]
@@ -467,11 +474,11 @@ position = Vector2(-1168, 419)
 [node name="enemy_spawners" type="Node2D" parent="Room2" unique_id=1985514990]
 
 [node name="spawn_point" type="Node2D" parent="Room2/enemy_spawners" unique_id=2032053090]
-position = Vector2(-2063, -627)
+position = Vector2(-2006, -681)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point2" type="Node2D" parent="Room2/enemy_spawners" unique_id=1426087384]
-position = Vector2(-2055, -117)
+position = Vector2(-2029, -188)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point3" type="Node2D" parent="Room2/enemy_spawners" unique_id=411501168]
@@ -665,11 +672,11 @@ position = Vector2(-1168, 419)
 [node name="enemy_spawners" type="Node2D" parent="Room3" unique_id=520146501]
 
 [node name="spawn_point" type="Node2D" parent="Room3/enemy_spawners" unique_id=1988771785]
-position = Vector2(-2063, -627)
+position = Vector2(-2035, -710)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point2" type="Node2D" parent="Room3/enemy_spawners" unique_id=482896886]
-position = Vector2(-2055, -117)
+position = Vector2(-2017, -199)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point3" type="Node2D" parent="Room3/enemy_spawners" unique_id=664862185]
@@ -863,11 +870,11 @@ position = Vector2(-1168, 419)
 [node name="enemy_spawners" type="Node2D" parent="Room4" unique_id=1319818833]
 
 [node name="spawn_point" type="Node2D" parent="Room4/enemy_spawners" unique_id=1207266562]
-position = Vector2(-2063, -627)
+position = Vector2(-2032, -714)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point2" type="Node2D" parent="Room4/enemy_spawners" unique_id=560721140]
-position = Vector2(-2055, -117)
+position = Vector2(-2022, -162)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point3" type="Node2D" parent="Room4/enemy_spawners" unique_id=137498211]
@@ -1061,11 +1068,11 @@ position = Vector2(-1168, 419)
 [node name="enemy_spawners" type="Node2D" parent="Room5" unique_id=1702562850]
 
 [node name="spawn_point" type="Node2D" parent="Room5/enemy_spawners" unique_id=1899118048]
-position = Vector2(-2063, -627)
+position = Vector2(-2023, -714)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point2" type="Node2D" parent="Room5/enemy_spawners" unique_id=1797850759]
-position = Vector2(-2055, -117)
+position = Vector2(-1998, -176)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point3" type="Node2D" parent="Room5/enemy_spawners" unique_id=1151224708]
@@ -1262,11 +1269,11 @@ position = Vector2(-1168, 419)
 [node name="enemy_spawners" type="Node2D" parent="Room6" unique_id=227299694]
 
 [node name="spawn_point" type="Node2D" parent="Room6/enemy_spawners" unique_id=1293472345]
-position = Vector2(-2063, -627)
+position = Vector2(-2006, -733)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point2" type="Node2D" parent="Room6/enemy_spawners" unique_id=1818303835]
-position = Vector2(-2055, -117)
+position = Vector2(-2001, -190)
 script = ExtResource("15_cdy06")
 
 [node name="spawn_point3" type="Node2D" parent="Room6/enemy_spawners" unique_id=1189869380]
@@ -1292,6 +1299,7 @@ autoplay = true
 max_distance = 50000.0
 attenuation = 1e-05
 bus = &"Music"
+script = ExtResource("19_qtppw")
 
 [node name="door" parent="." unique_id=612956653 instance=ExtResource("12_npa1m")]
 position = Vector2(2139, 150)
@@ -1317,3 +1325,59 @@ script = ExtResource("18_jxa0w")
 position = Vector2(19255, 150)
 rotation = 1.5707964
 script = ExtResource("18_jxa0w")
+
+[node name="hps" type="Node2D" parent="." unique_id=1343290555]
+
+[node name="health_point" parent="hps" unique_id=2140221623 instance=ExtResource("20_q6dln")]
+position = Vector2(-1501, 79)
+
+[node name="health_point2" parent="hps" unique_id=87782090 instance=ExtResource("20_q6dln")]
+position = Vector2(-493, -401)
+
+[node name="health_point3" parent="hps" unique_id=1353189432 instance=ExtResource("20_q6dln")]
+position = Vector2(1011, -158)
+
+[node name="health_point4" parent="hps" unique_id=342900762 instance=ExtResource("20_q6dln")]
+position = Vector2(2773, 115)
+
+[node name="health_point5" parent="hps" unique_id=1278499466 instance=ExtResource("20_q6dln")]
+position = Vector2(4778, 119.00001)
+
+[node name="health_point6" parent="hps" unique_id=975451545 instance=ExtResource("20_q6dln")]
+position = Vector2(5784, -396)
+
+[node name="health_point7" parent="hps" unique_id=681774582 instance=ExtResource("20_q6dln")]
+position = Vector2(7073, -366)
+
+[node name="health_point8" parent="hps" unique_id=2146552373 instance=ExtResource("20_q6dln")]
+position = Vector2(8079, 104)
+
+[node name="health_point9" parent="hps" unique_id=781715804 instance=ExtResource("20_q6dln")]
+position = Vector2(9600, 347)
+
+[node name="health_point10" parent="hps" unique_id=417712716 instance=ExtResource("20_q6dln")]
+position = Vector2(11354, 89)
+
+[node name="health_point11" parent="hps" unique_id=2058173749 instance=ExtResource("20_q6dln")]
+position = Vector2(13320, -396)
+
+[node name="health_point12" parent="hps" unique_id=1257742108 instance=ExtResource("20_q6dln")]
+position = Vector2(14376.001, 104)
+
+[node name="health_point13" parent="hps" unique_id=458396885 instance=ExtResource("20_q6dln")]
+position = Vector2(16620, -407)
+
+[node name="health_point14" parent="hps" unique_id=1458252166 instance=ExtResource("20_q6dln")]
+position = Vector2(17616, 114)
+
+[node name="health_point15" parent="hps" unique_id=1715251534 instance=ExtResource("20_q6dln")]
+position = Vector2(17116, 382)
+
+[node name="health_point16" parent="hps" unique_id=775914997 instance=ExtResource("20_q6dln")]
+position = Vector2(19906, -391)
+
+[node name="health_point17" parent="hps" unique_id=285326764 instance=ExtResource("20_q6dln")]
+position = Vector2(20902, 125)
+
+[node name="health_point18" parent="hps" unique_id=363704817 instance=ExtResource("20_q6dln")]
+position = Vector2(22393, -148)

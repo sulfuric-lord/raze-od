@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://6arh4ne8a88d" path="res://obj/level_editor/spawn_point.tscn" id="14_si52b"]
 [ext_resource type="PackedScene" uid="uid://c4c7a24b205mq" path="res://obj/level_editor/health_point.tscn" id="15_01n6w"]
 [ext_resource type="AudioStream" uid="uid://c0i4cw0gwg3y5" path="res://resources/audio/soundtrack/lvl1.mp3" id="16_01n6w"]
+[ext_resource type="PackedScene" uid="uid://drio571rhuiet" path="res://scenes/main_menu/pause.tscn" id="18_o6frn"]
+[ext_resource type="Script" uid="uid://d3tl4ngys5gh8" path="res://scripts/misc/audio_stream_player_2d.gd" id="19_pkib5"]
 
 [sub_resource type="Theme" id="Theme_bcnxi"]
 default_font = ExtResource("3_6u1mn")
@@ -85,14 +87,18 @@ position = Vector2(14, -195.00009)
 scale = Vector2(2.441362, 3.1878939)
 texture = ExtResource("7_r6p65")
 
-[node name="GameManager" parent="." unique_id=936136611 instance=ExtResource("8_xdqt8")]
+[node name="Control3" parent="CanvasLayer" unique_id=1347286910 instance=ExtResource("18_o6frn")]
+visible = false
+
+[node name="GameManager" parent="." unique_id=936136611 node_paths=PackedStringArray("pause") instance=ExtResource("8_xdqt8")]
 position = Vector2(909, 787)
 enemy_scene = ExtResource("7_k6f3i")
-max_enemies = 4
+max_enemies = 3
 ally_scene = ExtResource("9_adb74")
-max_allies = 3
+max_allies = 2
 current_level = 1
-goal = 80
+goal = 60
+pause = NodePath("../CanvasLayer/Control3")
 
 [node name="floor" type="Node2D" parent="." unique_id=297382774]
 position = Vector2(201, 29)
@@ -200,10 +206,6 @@ position = Vector2(700, 0)
 
 [node name="jps" type="Node2D" parent="." unique_id=1574282145]
 
-[node name="jump_point" parent="jps" unique_id=1913657880 instance=ExtResource("12_u0fll")]
-position = Vector2(43, 446)
-jump_direction = Vector2(1, -1)
-
 [node name="jump_point2" parent="jps" unique_id=1921939456 instance=ExtResource("12_u0fll")]
 position = Vector2(353, 204)
 jump_direction = Vector2(1, -1)
@@ -252,9 +254,6 @@ jump_direction = Vector2(1, -1)
 
 [node name="jps2" type="Node2D" parent="." unique_id=955382213]
 scale = Vector2(-1, 1)
-
-[node name="jump_point" parent="jps2" unique_id=1622760163 instance=ExtResource("12_u0fll")]
-position = Vector2(43, 446)
 
 [node name="jump_point2" parent="jps2" unique_id=1338612109 instance=ExtResource("12_u0fll")]
 position = Vector2(353, 204)
@@ -341,3 +340,4 @@ autoplay = true
 max_distance = 1000000.0
 attenuation = 1e-05
 bus = &"Music"
+script = ExtResource("19_pkib5")

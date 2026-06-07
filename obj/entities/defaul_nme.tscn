@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://6bx7c2eh6iwr" path="res://scripts/weapons/data/WeaponData.gd" id="4_f0j4v"]
 [ext_resource type="Resource" uid="uid://chty5eht1ewb0" path="res://resources/weapons/remmington870.tres" id="5_1fmsf"]
 [ext_resource type="Script" uid="uid://r6d6dafxa0u5" path="res://scripts/misc/team.gd" id="6_1fmsf"]
+[ext_resource type="Resource" uid="uid://bqeut0a8nlmcc" path="res://resources/weapons/HK416.tres" id="6_bqh1o"]
 [ext_resource type="Texture2D" uid="uid://dooq1h0yhs1gd" path="res://resources/sprites/entities/enemies/torso.png" id="6_p0hry"]
 [ext_resource type="Texture2D" uid="uid://chnrdt7chy2ot" path="res://resources/sprites/entities/enemies/head.png" id="7_v13b1"]
 [ext_resource type="Texture2D" uid="uid://dlev3lklkt1lk" path="res://resources/sprites/entities/enemies/leg.png" id="8_d8npv"]
@@ -301,6 +302,7 @@ _data = {
 [node name="DefaulNme" type="CharacterBody2D" unique_id=882589215]
 collision_layer = 2
 script = ExtResource("1_fi8s1")
+retarget_time = 0.5
 maxHp = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=663862998]
@@ -310,7 +312,7 @@ debug_color = Color(0.9631831, 3.080368e-06, 0.5030446, 0.41960785)
 
 [node name="Weapon" type="Node2D" parent="." unique_id=1791825515]
 script = ExtResource("3_wu4ap")
-weapons = Array[ExtResource("4_f0j4v")]([ExtResource("5_1fmsf")])
+weapons = Array[ExtResource("4_f0j4v")]([ExtResource("5_1fmsf"), ExtResource("6_bqh1o")])
 
 [node name="Sprite2D" type="Sprite2D" parent="Weapon" unique_id=1572162984]
 z_index = 1
@@ -345,7 +347,7 @@ texture = ExtResource("6_p0hry")
 [node name="head" type="Bone2D" parent="Skeleton2D/torso" unique_id=1300415558]
 position = Vector2(0, -19)
 rotation = 0.091999754
-scale = Vector2(0.99999756, 0.99999756)
+scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(1, 0, 0, 1, 0, -19)
 editor_settings/show_bone_gizmo = false
 

@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://drio571rhuiet"]
+
+[ext_resource type="Script" uid="uid://3k5uei6faatt" path="res://scripts/nav/pause.gd" id="1_6eyaj"]
+[ext_resource type="VideoStream" uid="uid://d2p5lvfa4veir" path="res://resources/misc/bg.ogv" id="1_62e2m"]
+[ext_resource type="Script" uid="uid://c48ryu4nno8ou" path="res://scripts/nav/return.gd" id="2_qtu10"]
+
+[node name="Control" type="Control" unique_id=1347286910]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6eyaj")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=1388919256]
+modulate = Color(0.53, 0.53, 0.53, 0.42352942)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("1_62e2m")
+speed_scale = 0.5
+autoplay = true
+expand = true
+loop = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=758705804]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.25
+offset_top = -33.5
+offset_right = 110.25
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer" unique_id=1443179512]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Level X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer" unique_id=1359865718]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "RAZE: XX /// XX :ALIENS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer" unique_id=685851880]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Your Deaths: XX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1662341997]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -131.0
+offset_top = -191.0
+offset_right = 132.0
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.003035, 1)
+theme_override_constants/separation = 30
+
+[node name="Button" type="Button" parent="VBoxContainer2" unique_id=836046608]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Return"
+script = ExtResource("2_qtu10")
+
+[node name="Button2" type="Button" parent="VBoxContainer2" unique_id=1482379205]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "To main menu"
+script = ExtResource("2_qtu10")
+
+[connection signal="pressed" from="VBoxContainer2/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/Button2" to="." method="_on_button_2_pressed"]

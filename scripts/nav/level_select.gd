@@ -3,19 +3,19 @@ extends Control
 var level_data = {
 	1: {
 		"name": "Hellraisers",
-		"desc": "Day 1. It was a surprise attack. Unknown predators invaded the planet, destroying 80% of it within the first few hours of the attack. The RAZE squad has mobilized and is heading to the epicenter of the battle."
+		"desc": "Day 1. It was a surprise attack. Unknown predators invaded the planet, destroying 80% of it within the first few hours of the attack. The RAZE squad has mobilized and is heading to the epicenter of the battle. Kill at least 60 aliens."
 	},
 	2: {
 		"name": "Expect a fight",
-		"desc": "Day 2. Allied units have been crushed, and Earth is fighting to recapture its last remaining military bases. Hold out for reinforcements while fending off the onslaught of alien creatures."
+		"desc": "Day 2. Allied units have been crushed, and Earth is fighting to recapture its last remaining military bases. Hold out for reinforcements while fending off the onslaught of alien creatures. Survive 3 minutes."
 	},
 	3: {
 		"name": "The hunt",
-		"desc": "Day 3. Thanks to reinforcements, we managed to recapture key positions; our forces are ready to launch a counterattack."
+		"desc": "Day 3. Thanks to reinforcements, we managed to recapture key positions; our forces are ready to launch a counterattack. Kill at least 80 aliens."
 	},
 	4: {
 		"name": "Grand Finale",
-		"desc": "Day 4. Our unit managed to drive the predators off the planet, but they won’t get off that easily... turn their own spaceship into a alien grinder"
+		"desc": "Day 4. Our unit managed to drive the predators off the planet, but they won’t get off that easily... turn their own spaceship into a alien grinder. Kill EVERYBODY on their spaceship."
 	}
 }
 

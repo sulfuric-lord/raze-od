@@ -115,7 +115,7 @@ func think(delta):
 	else:
 		current_jp = null
 	
-	if same_level and distance_to_target <= 350 and is_on_floor():
+	if same_level and distance_to_target <= 500 and is_on_floor():
 		current_state = State.FIRE
 	else:
 		current_state = State.CHASE
@@ -167,11 +167,13 @@ func state_chase(delta):
 func state_fire(delta):
 	if current_target == null:
 		return
-	
-	velocity.x = 0
-	
+
+	if distance_to_target < 350:
+		velocity.x = -sign(to_target.x) * speed * 0.7
+	else:
+		velocity.x = 0
+
 	var dir = (current_target.global_position - global_position).normalized()
-	
 	weapon.ai_shoot(dir)
 
 func state_retreat(delta):

@@ -302,6 +302,7 @@ _data = {
 [node name="DefaulNme" type="CharacterBody2D" unique_id=882589215]
 collision_layer = 2
 script = ExtResource("1_fwgem")
+retarget_time = 0.5
 maxHp = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=663862998]
@@ -347,7 +348,7 @@ texture = ExtResource("6_ld82m")
 [node name="head" type="Bone2D" parent="Skeleton2D/torso" unique_id=980826377]
 position = Vector2(0, -19)
 rotation = 0.091999754
-scale = Vector2(0.99999714, 0.99999714)
+scale = Vector2(0.99999684, 0.99999684)
 rest = Transform2D(1, 0, 0, 1, 0, -19)
 editor_settings/show_bone_gizmo = false
 

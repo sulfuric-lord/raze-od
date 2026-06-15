@@ -26,16 +26,22 @@ autoplay = true
 expand = true
 loop = true
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=1073431728]
-layout_direction = 1
-layout_mode = 0
-offset_left = 379.0
-offset_top = 27.000002
-offset_right = 1915.0
-offset_bottom = 1051.0
-scale = Vector2(0.26057562, 0.26057562)
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=68291495]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_right = 300.0
+offset_bottom = 400.0
+grow_horizontal = 2
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer2" unique_id=1073431728]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
 texture = ExtResource("2_wu84c")
-metadata/_edit_use_anchors_ = true
+expand_mode = 1
+stretch_mode = 4
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=168349529]
 layout_mode = 1
@@ -46,9 +52,7 @@ anchor_bottom = 0.75540125
 offset_top = -50.5
 offset_bottom = 50.5
 grow_horizontal = 2
-grow_vertical = 2
 scale = Vector2(1.0126414, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=277951376]
 layout_mode = 2
@@ -70,6 +74,25 @@ text = "Options
 layout_mode = 2
 theme_override_font_sizes/font_size = 41
 text = "Exit"
+
+[node name="CenterContainer3" type="CenterContainer" parent="." unique_id=570681039]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -207.0
+offset_top = -51.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CenterContainer3" unique_id=92342568]
+layout_mode = 2
+text = "Made by Paul Vladislav  
+9-2-PO-22c, KVPTK, 2026  
+"
+horizontal_alignment = 2
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/main menu" to="CenterContainer/VBoxContainer/main menu" method="_on_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/options" to="CenterContainer/VBoxContainer/main menu" method="_on_options_pressed"]
